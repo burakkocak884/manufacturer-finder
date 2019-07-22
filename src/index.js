@@ -2,13 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-
-import manageVehicle from './reducers/manageVehicle';
+import thunk from 'redux-thunk';
+import manageVehicle from './reducers/manageVehicle.js';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 
 
-const store = createStore(manageVehicle)
+const store = createStore(manageVehicle,applyMiddleware(thunk));
 
 
 

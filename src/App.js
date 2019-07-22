@@ -5,24 +5,19 @@ import VehicleIndex from './container/VehicleIndex';
 import VehicleShow from './components/VehicleShow';
 import FoundVehicleContainer from './container/FoundVehicleContainer'
 import VehicleSearchForm from './components/VehicleSearchForm';
-import {wishedCarHolder} from './container/VehicleIndex';
+
 import WishListContainer from './container/WishListContainer'
-import { theWishList } from './container/VehicleIndex';
-import { Search } from 'semantic-ui-react';
+
+import { fetchVehicles } from './action/Vehicles'
+
 import { connect } from 'react-redux';
-import _ from 'lodash';
+
 
 
 
 
     class App extends Component{
-        state={
-          vehicles: [],
-          searchTerm: '',
-          foundVehicles:[]
-         
-          }
-
+      
 
 //           handleChange=(event)=>{
 //   this.setState({
@@ -31,10 +26,12 @@ import _ from 'lodash';
 // })
 // }
 
-      componentDidMount(){
-           fetch("http://localhost:3000/vehicles")
-           .then(res => res.json())
-           .then(vehicles => this.setState({vehicles}))
+
+       componentDidMount(){
+        this.props.fetchVehicles()
+      //      fetch("http://localhost:3000/vehicles")
+      //      .then(res => res.json())
+      //      .then(vehicles => this.setState({vehicles}))
           }
            
 
@@ -55,7 +52,7 @@ import _ from 'lodash';
 
 
     render(){
-      console.log("app.js=", this.props)
+      console.log("app.js vehicles=", this.props)
         return (
 
         <Router>
@@ -66,7 +63,7 @@ import _ from 'lodash';
 
             
            
-            <FoundVehicleContainer  foundCars={this.state.foundVehicles}/> 
+            <FoundVehicleContainer  /> 
             <VehicleSearchForm searchTerm={this.vehiclesToFind}/>
           
            
@@ -74,28 +71,23 @@ import _ from 'lodash';
 
         
             <Switch>
-             <Route path="/vehicles/:id" render={({match})=>(<VehicleShow {...this.state.vehicles.find(p => p.id === parseInt(match.params.id))}/>)}/>
-             <Route path="/vehicles" render={()=> (<VehicleIndex vehicles={this.state.vehicles} addWishList={this.addWishList} deleteCar={this.deleteCar}/>)}/> 
-             <Route path="/" render={()=>(<h1>Welcome</h1>)}/>
-             <Route path="/vehicles/foundVehicles" render={() => (<FoundVehicleContainer  foundCars={this.state.foundVehicles}/>) } />
-             <Route path="/vehicles/wished" render={() => (<WishListContainer wishedCars={this.state.wishCarHolder}/>) } />
+             <Route path="/vehicles/:id" render={()=>(<VehicleShow />)}/>
+             <Route path="/vehicles" render={() => (<VehicleIndex />)}/> 
+             <Route exact path="/" render={()=>(<h1>Welcome</h1>)}/>
+             <Route path="/vehicles/foundVehicles" render={() => (<FoundVehicleContainer  />)} />
+             <Route path="/vehicles/wished" render={() => (<WishListContainer />) } />
            </Switch>
 
        
         </div>
         </Router>
+
     
   );
  
 }
 }
-const mapStateToProps = state => {
-
-  return {
-    vehicles: state.vehicles
-  }
 
 
-  }
 
-export default connect(mapStateToProps)(App);
+export default connect(null, {fetchVehicles})(App)

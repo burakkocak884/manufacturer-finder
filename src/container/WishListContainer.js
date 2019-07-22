@@ -20,7 +20,7 @@ class WishListContainer extends Component {
 		console.log("cars wished",this.props)
 
        const{wishedCars} = this.props
-   
+   debugger
    if (this.props.wishedCars.length > 0){
   
 		return(
@@ -46,7 +46,7 @@ class WishListContainer extends Component {
 					    </div>
 	               </Link>
 
-				<button onClick={()=>this.props.deleteFromWishList(v.id)} >Remove</button>
+				<button wishedCar={this.props.wishedCars} onClick={()=>this.props.deleteFromWishList(v.id)} >Remove</button>
 			 </div>
 			 ))}
 				</div>
@@ -63,9 +63,16 @@ class WishListContainer extends Component {
 	
 
 }}
+
+const mapStateToProps = state =>{
+	return{wishedCars: state.wishCarHolder}
+}
+
+
+
 const mapDispatchToProps = dispatch => ({
   
   deleteFromWishList: id => dispatch({type: "DELETE_FROM_WISH",id})
 })
 
-export default connect(null, mapDispatchToProps)(WishListContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(WishListContainer);

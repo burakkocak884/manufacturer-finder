@@ -1,22 +1,22 @@
 import React, {Component} from 'react';
 import {Link}  from 'react-router-dom';
-
+import { connect} from 'react-redux';
 class FoundVehicleContainer extends Component {
 
 
 	render(){
 
 
-		console.log("found!!!",this.props)
+		console.log("props",this.props)
        const{foundCars} = this.props
-   
-  if (this.props.foundCars.length > 0){
-  
+
+  if (this.props.foundCars && this.props.foundCars > 0){
+console.log("if existed")
 		return(
 
 <table class="wish-list-table">
 			<div class="row">
-			<h2 id="car-header1">Search result found {this.props.foundCars[0].make}(s)</h2>
+			<h2 id="car-header1">Search result found {foundCars[0].make}(s)</h2>
 		
 				{foundCars.map((v,index) => (
 
@@ -43,4 +43,10 @@ class FoundVehicleContainer extends Component {
 
 }}
 
-export default FoundVehicleContainer;
+const mapStateToProps = (state) =>{ 
+	return{
+		foundCars: state.foundVehicles
+	 }
+	}
+
+export default connect(mapStateToProps, null)(FoundVehicleContainer);

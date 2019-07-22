@@ -1,132 +1,50 @@
 
 import React, { Component} from 'react';
-import {Link}  from 'react-router-dom';
+
 import { connect } from 'react-redux';
-import WishListContainer from './WishListContainer'
+import  {Link} from 'react-router-dom';
 
 
 
 
 class VehicleIndex extends Component {
-		constructor(props){
-			super(props)
+		
 
-			this.state={
-				idHolder: [],
-				wishCarHolder:[]
-					}
-				}
-
-
-
-			wishClick = (e) =>{
-				this.props.addWishList(this.state.idHolder)
-			}
-
-
-			handleSubmit = (e) =>{
-				
-				e.preventDefault()
-				const currentId = parseInt(e.target.value)
-					this.setState({
-					wishCarHolder: [],
-					idHolder: [...this.state.idHolder, currentId]
-					},() => console.log('idHolderInsight=',this.state.idHolder))
-					console.log('idHolderOutside=',this.state.idHolder)
-				}
-
- theWishList = () =>{
-		   	return this.state.wishCarHolder;
-		   }
-		   
-
-
-   
+   handleSubmit = e => {
+ 	e.preventDefault()
+ 
+}
 	render(){
 
-		 console.log('render at VehicleIndex=', this.props)
-		 console.log('wishlist array', this.state.wishCarHolder)
-		const {vehicles, deleteVehicle, addWishList} = this.props
+
+		 //  console.log('render at VehicleIndex=', this.props)
+		 // // console.log('wishlist array', this.state.wishCarHolder)
+	 	 const { vehicles} = this.props
 	
-	if(this.state.idHolder.length >0){
-
-	
-  const theList = this.props.vehicles.map(vehicle=>{
-  	return(this.state.idHolder.find(theId =>{
-  		
-  		if(vehicle.id === theId){
-  			if(!this.state.wishCarHolder.includes(vehicle)){
-  		 this.state.wishCarHolder.push(vehicle);
-  		}
-
-  		}
-  		
-  		}))})
-  
- 
-  }
- 
-
-console.log('wish list=',this.state.wishCarHolder)
-
 	return(
 		<div>
+	
+			<ul>
 			
-				<WishListContainer wishedCars={this.state.wishCarHolder} deleteFromWishList={this.props.deleteFromWishList}/>
-			
-		<br />
-		
-		
-			<div class="row"> 
-		
 				{vehicles.map(v => (
-
-			  <div  class="column" key={v.id}>
-			 	 
-				   
-				    <Link to={`/vehicles/${v.id}`}>
-					    <div class="card"  >
-						    <h4>{v.year}--{v.make}</h4>
-						    
-					    </div>
-	               </Link>
-
-				<button onClick={deleteVehicle}>X</button>
-				<button key={v.id} value={v.id} onClick={this.handleSubmit}>Add to Wish List</button>
-				
-			 </div>
-
-
-			  ))}
-
-			
-		
-		
-		</div>
-		
-		
+	<Link to={`/vehicles/${v.id}`} onClick={()=>this.props.vehicleDetail(v.id)} ><li key={v.id}>{v.year}--{v.make}</li></Link>
+					
+					))}
+			</ul>
 		</div>
 
 	)
-
-
-}
-}
+}}
 
 
 const mapStateToProps = (state) =>{ 
-	return{
-		
-		wishCarHolder: state.wishCarHolder
-
-	}
+	return{vehicles: state.vehicles}
 	 }
 
 const mapDispatchToProps = dispatch => ({
 
+  vehicleDetail: id => dispatch({type: "VEHICLE_DETAIL",id})
   
-  deleteVehicle: id => dispatch({type: "DELETE_VEHICLE",id}),
-  deleteFromWishList: id => dispatch({type: "DELETE_FROM_WISH",id})
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(VehicleIndex)

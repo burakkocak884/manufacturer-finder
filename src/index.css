@@ -107,6 +107,9 @@ body {
 .wish-list-table{
   border: 10px solid blue;
 }
+.wish-list-button{
+  color: blue;
+}
 
 /* Responsive columns - one column layout (vertical) on small screens */
 @media screen and (max-width: 600px) {
