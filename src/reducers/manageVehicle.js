@@ -28,7 +28,7 @@ console.log('state=',state)
       
     
       //...state, restaurants: state.restaurants.concat(restaurant)
-     return {wishCarHolder: state.vehicles.filter(vehicle => vehicle.id === action.vehicleId)};
+     return {wishCarHolder: state.vehicles.find(vehicle => vehicle.id === action.vehicleId)};
 
 
 
