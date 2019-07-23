@@ -54,7 +54,7 @@ import { connect } from 'react-redux';
            <Link to="/"><button>Home</button></Link>
             <Link to="/vehicles"><button>List of Available Cars</button></Link>
            
-            <VehicleSearchForm />
+           
             <FoundVehicleContainer  /> 
             <WishListContainer />
             

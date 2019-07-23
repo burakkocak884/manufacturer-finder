@@ -1,10 +1,12 @@
 import React, {Component} from 'react';
 import {Link}  from 'react-router-dom';
 import { connect} from 'react-redux';
+import VehicleSearchForm from '../components/VehicleSearchForm';
 class FoundVehicleContainer extends Component {
 
 
 	render(){
+		
 
 
 		console.log("props",this.props)
@@ -40,6 +42,7 @@ foundIt = <p>There is no vehicle(s) to display</p>
 			<table class="finders">
 			<td>
 			<h1 class="vehicle-finder-header">Vehicle Finder</h1>
+			 <VehicleSearchForm />
 			{foundIt}
 			</td>
 			</table>

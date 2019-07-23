@@ -23,17 +23,18 @@ class WishListContainer extends Component {
        let foundIt;
   
     if (wishedCars && wishedCars.length > 0){
-   	foundIt = 	<div>{wishedCars.map(v => (
+   	foundIt = 	<div>{wishedCars.map((v,index) => (
    				<div class='column'>
    				<div class='row'>
    				
 
 	<Link to={`/vehicles/${v.id}`} onClick={()=> this.props.vehicleDetail(v.id)}>
 	<div class ='card'>
+	<p>#{index + 1}</p>
 	{v.year}--{v.make}
 	</div>
 	</Link>
-	<button onClick={()=> this.props.deleteFromWish(v.id)}>Remove from Wish List</button>
+	<button  onClick={()=> this.props.deleteFromWish(v.id)} >Remove</button>
 					
 				
    			</div>

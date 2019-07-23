@@ -20,16 +20,25 @@ class VehicleIndex extends Component {
 	
 	return(
 		<div>
+		<table class="v-index">
+		<td>
+		
+		<div class= "column12">
+
+		
 	
-			<ul>
+			
 			
 				{thevehicles.map(v => (
-	<Link to={`/vehicles/${v.id}`} onClick={()=> this.props.vehicleDetail(v.id)}><li key={v.id}>{v.year}--{v.make}</li></Link>
+	<Link to={`/vehicles/${v.id}`} onClick={()=> this.props.vehicleDetail(v.id)}><div class="row"><div class="card">{v.year}--{v.make}</div></div></Link>
 					
 					))}
-			</ul>
+			
 		</div>
 
+		</td>
+		</table>
+		</div>
 	)
 }}
 
