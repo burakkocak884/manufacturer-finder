@@ -20,46 +20,47 @@ class WishListContainer extends Component {
 		console.log("cars wished",this.props)
 
        const{wishedCars} = this.props
-   debugger
-   if (this.props.wishedCars.length > 0){
+       let foundIt;
   
-		return(
-			<table class="wish-list-table">
-			<div>
+    if (wishedCars && wishedCars.length > 0){
+   	foundIt = 	<div>{wishedCars.map(v => (
+   				<div class='column'>
+   				<div class='row'>
+   				
 
-			
-
-
-			<div class="row">
-			
-		
-				{wishedCars.map(v => (
-
-			  <div  class="column" key={v.id}>
-			 	 
-				   
-				    <Link to={`/vehicles/${v.id}`}>
-					    <div class="card2"  >
-					    
-						    <h2>{v.year}-{v.make}-{v.color}</h2>
-						  
-					    </div>
-	               </Link>
-
-				<button wishedCar={this.props.wishedCars} onClick={()=>this.props.deleteFromWishList(v.id)} >Remove</button>
-			 </div>
-			 ))}
-				</div>
+	<Link to={`/vehicles/${v.id}`} onClick={()=> this.props.vehicleDetail(v.id)}>
+	<div class ='card'>
+	{v.year}--{v.make}
+	</div>
+	</Link>
+	<button onClick={()=> this.props.deleteFromWish(v.id)}>Remove from Wish List</button>
+					
 				
-				</div>
-				</table>
+   			</div>
+   			</div>
 
-				)}else{
+					))}
 
-			return(<h4>Your wish list is empty</h4>)
-		}
+   	</div>
+
+   }else{
+foundIt = <p>There is no vehicle(s) to display</p>
+   }
+
+		return(
 
 
+
+			<div>
+			<table class="finders">
+			<td>
+			<h1>My wish List</h1>
+			{foundIt}
+			</td>
+			</table>
+			
+			</div>
+			)
 	
 
 }}
@@ -72,7 +73,9 @@ const mapStateToProps = state =>{
 
 const mapDispatchToProps = dispatch => ({
   
-  deleteFromWishList: id => dispatch({type: "DELETE_FROM_WISH",id})
+  deleteFromWishList: id => dispatch({type: "DELETE_FROM_WISH",id}),
+  vehicleDetail: vehicleId => dispatch({type: "VEHICLE_DETAIL",vehicleId}),
+  deleteFromWish: vehicleId => dispatch({type: 'DELETE_FROM_WISH',vehicleId})
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(WishListContainer);

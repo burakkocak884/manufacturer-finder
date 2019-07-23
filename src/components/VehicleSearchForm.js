@@ -45,6 +45,7 @@ this.setState({
 		
 		return (
 			<div>
+            <br />
 			<h1>Try Our Vehicle Finder Tool.</h1>
 			<form onSubmit={this.handleSubmit} >
 			<input   type="text" onChange={this.handleChange} value={this.state.searchTerm1}></input>

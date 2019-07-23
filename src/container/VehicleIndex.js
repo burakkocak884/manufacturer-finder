@@ -10,24 +10,21 @@ import  {Link} from 'react-router-dom';
 class VehicleIndex extends Component {
 		
 
-   handleSubmit = e => {
- 	e.preventDefault()
- 
-}
+
 	render(){
 
 
 		 //  console.log('render at VehicleIndex=', this.props)
 		 // // console.log('wishlist array', this.state.wishCarHolder)
-	 	 const { vehicles} = this.props
+	 	 const { thevehicles} = this.props
 	
 	return(
 		<div>
 	
 			<ul>
 			
-				{vehicles.map(v => (
-	<Link to={`/vehicles/${v.id}`} onClick={()=>this.props.vehicleDetail(v.id)} ><li key={v.id}>{v.year}--{v.make}</li></Link>
+				{thevehicles.map(v => (
+	<Link to={`/vehicles/${v.id}`} onClick={()=> this.props.vehicleDetail(v.id)}><li key={v.id}>{v.year}--{v.make}</li></Link>
 					
 					))}
 			</ul>
@@ -38,12 +35,14 @@ class VehicleIndex extends Component {
 
 
 const mapStateToProps = (state) =>{ 
-	return{vehicles: state.vehicles}
+	return{
+		thevehicles: state.vehicles
+	}
 	 }
 
 const mapDispatchToProps = dispatch => ({
 
-  vehicleDetail: id => dispatch({type: "VEHICLE_DETAIL",id})
+  vehicleDetail: vehicleId => dispatch({type: "VEHICLE_DETAIL",vehicleId})
   
 })
 

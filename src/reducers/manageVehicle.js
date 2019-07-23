@@ -1,8 +1,8 @@
 export default function manageVehicle(state = {
-  vehicles:[], foundVehicles: [],wishCarHolder: [], theDetailCar: []
+  vehicles:[], foundVehicles: [],  theDetailCar: [], wishCarHolder: []
 }, action) {
-console.log("action header=",action)
-console.log('state=',state)
+
+console.log('foundVehicles=',state)
 
   switch (action.type) {
       
@@ -15,26 +15,37 @@ console.log('state=',state)
 
        
       case 'FIND_VEHICLES':
-      return{foundVehicles: state.vehicles.filter(vehicle => vehicle.make.toLowerCase() === action.make.toLowerCase())}
+      const myCar= state.vehicles.filter(vehicle => vehicle.make.toLowerCase() === action.make.toLowerCase())
      
+      return{...state,foundVehicles: myCar }
+    
       case 'VEHICLE_DETAIL':
-      const theCar = state.vehicles.find(vehicle => vehicle.id === action.id)
-   	  return {theDetailCar: theCar};
+      const theCar = state.vehicles.find(vehicle => vehicle.id === action.vehicleId)
+    
+   	  return {...state, theDetailCar: theCar};
 
 
 
       case 'ADD_TO_WISH':
-     debugger
-      
-    
-      //...state, restaurants: state.restaurants.concat(restaurant)
-     return {wishCarHolder: state.vehicles.find(vehicle => vehicle.id === action.vehicleId)};
+ if(!state.wishCarHolder){
+     return {...state,wishCarHolder: [state.theDetailCar]};
+ }else{
+ 	 return {...state,wishCarHolder: [...state.wishCarHolder, state.theDetailCar]};
+ }
 
+
+     case 'DELETE_FROM_WISH':
+
+     const newWishList = state.wishCarHolder.filter(c => c.id !== action.vehicleId)
+  
+     return {wishCarHolder: newWishList}
+     
 
 
 
     default:
       return state;
+
   }
    
 };

@@ -29,6 +29,7 @@ import { connect } from 'react-redux';
 
        componentDidMount(){
         this.props.fetchVehicles()
+        // this.props.individualVehicle(this.props.carID)
       //      fetch("http://localhost:3000/vehicles")
       //      .then(res => res.json())
       //      .then(vehicles => this.setState({vehicles}))
@@ -36,14 +37,7 @@ import { connect } from 'react-redux';
            
 
 
-           vehiclesToFind = (word) =>{
-               const foundCars = this.state.vehicles.filter(vehicle => vehicle.make.toLowerCase().includes(word.toLowerCase()))
-               if (foundCars.length > 0){
-                  return this.setState ({foundVehicles: foundCars})
-               }else {
-                return "No Cars Found";
-           }}
-
+          
            
 
            
@@ -54,34 +48,29 @@ import { connect } from 'react-redux';
     render(){
       console.log("app.js vehicles=", this.props)
         return (
-
+<div class="main-display'">
         <Router>
-          <div >
+          
            <Link to="/"><button>Home</button></Link>
             <Link to="/vehicles"><button>List of Available Cars</button></Link>
-             <Link to="/vehicles/wished"><button>My Wish List</button></Link>
-
-            
            
+            <VehicleSearchForm />
             <FoundVehicleContainer  /> 
-            <VehicleSearchForm searchTerm={this.vehiclesToFind}/>
-          
-           
-          
-
-        
+            <WishListContainer />
+            
+            
             <Switch>
              <Route path="/vehicles/:id" render={()=>(<VehicleShow />)}/>
              <Route path="/vehicles" render={() => (<VehicleIndex />)}/> 
-             <Route exact path="/" render={()=>(<h1>Welcome</h1>)}/>
+            
              <Route path="/vehicles/foundVehicles" render={() => (<FoundVehicleContainer  />)} />
              <Route path="/vehicles/wished" render={() => (<WishListContainer />) } />
            </Switch>
 
        
-        </div>
+       
         </Router>
-
+ </div>
     
   );
  
@@ -90,4 +79,4 @@ import { connect } from 'react-redux';
 
 
 
-export default connect(null, {fetchVehicles})(App)
+export default connect(null,{fetchVehicles})(App)

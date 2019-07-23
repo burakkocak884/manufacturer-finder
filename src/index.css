@@ -31,12 +31,13 @@ code {
 	background-color: #ffffff90
 }
 table td{
-border: 1px solid black;
+border: 5px solid  #D5634A;
+background-color: #ffffff90
 }
-.VehicleShow-table{
+ table td .finders{
+border: 5px solid  brown;
+}
 
-	width: 100%;
-}
 .vehicle-header{
 	color: green;
 }
@@ -56,17 +57,59 @@ body {
 
 /* Float four columns side by side */
 .column {
+
   float: left;
-  width: 25%;
+  width: 20%;
   padding:10px 20px;
 
 }
 
 
-/* Remove extra left and right margins, due to padding in columns */
-.row:hower {
-  margin: 0 -5px;
 
+
+/* Remove extra left and right margins, due to padding in columns */
+.row div{
+  float: left;
+  margin: 0 5px;
+  /*background-image:url('3D-car.jpg');*/
+
+  background-image:url('3D-car.jpg');
+
+
+  -webkit-animation-name: example; /* Safari 4.0 - 8.0 */
+  -webkit-animation-duration: 40s; /* Safari 4.0 - 8.0 */
+  animation-name: example;
+  animation-duration: 40s;
+  animation-iteration-count: infinite;
+
+}
+@-webkit-keyframes example {
+  from {background-image:url('3D-car.jpg'); background-size: 10%;}
+  to {background-image:url('3D-car.jpg'); background-size: 20%;}
+  from {background-image:url('3D-car.jpg'); background-size: 30%;}
+  to {background-image:url('3D-car.jpg'); background-size: 40%;}
+  from {background-image:url('3D-car.jpg'); background-size: 50%;}
+  to {background-image:url('3D-car.jpg'); background-size: 60%;}
+  from {background-image:url('3D-car.jpg'); background-size: 70%;}
+  to {background-image:url('3D-car.jpg'); background-size: 80%;}
+  from {background-image:url('3D-car.jpg'); background-size: 90%;}
+  to {background-image:url('3D-car.jpg'); background-size: 100%;}
+  from {background-image:url('3D-car.jpg'); background-size: 110%;}
+  to {background-image:url('3D-car.jpg'); background-size: 120%;}
+  from {background-image:url('3D-car.jpg'); background-size: 130%;}
+  to {background-image:url('3D-car.jpg'); background-size: 140%;}
+  from {background-image:url('3D-car.jpg'); background-size: 150%;}
+  to {background-image:url('3D-car.jpg'); background-size: 160%;}
+  from {background-image:url('3D-car.jpg'); background-size: 170%;}
+  to {background-image:url('3D-car.jpg'); background-size: 180%;}
+  from {background-image:url('3D-car.jpg'); background-size: 190%;}
+  to {background-image:url('3D-car.jpg'); background-size: 200%;}
+
+
+}
+@keyframes example {
+  from {background-image:url('3D-car.jpg'); background-size:1000%}
+  to {background-image:url('3D-car.jpg');background-size: 200%;}
 }
 
 /* Clear floats after the columns */
@@ -78,37 +121,41 @@ body {
 
 /* Style the counter cards */
 .card {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
-  padding: 16px;
+  float: left;
+  box-shadow: 20px 4px 8px 0 rgba(0, 0, 0, 0.7); /* this adds the "card" effect */
+  padding: 30px;
   text-align: center;
-  background-color: tan;
+  
   
 
 }
-.card1 {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
-  padding: 16px;
-  text-align: center;
-  background-color: lightgreen;
+.card-detail:hover{
+  color:red;
+  font-weight: bold;
+
+
 }
-.card2 {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
-  padding: 16px;
-  text-align: center;
-  background-color: orange;
+.main-display{
+  margin-top:40px;
+  margin-left: 10px;
+  padding: 10px;
 }
-.magnifiying-glass{
-  color: #ffffff00 
-}
+
+
+
 #car-header1{
   padding: 20px;
   color: green;
 }
-.wish-list-table{
-  border: 10px solid blue;
-}
+
 .wish-list-button{
   color: blue;
+}
+.cars-found {
+  color: purple;
+}
+.vehicle-finder-header{
+  color:orange;
 }
 
 /* Responsive columns - one column layout (vertical) on small screens */

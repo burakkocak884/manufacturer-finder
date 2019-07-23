@@ -9,44 +9,58 @@ class FoundVehicleContainer extends Component {
 
 		console.log("props",this.props)
        const{foundCars} = this.props
+       let foundIt;
+   if (foundCars && foundCars.length > 0){
+   	foundIt = 	<div>
+     <h2 class="cars-found'"><span id="car-header1">{foundCars.length}</span> {foundCars[0].make}(s) Found!!!</h2>
+   	 <h3>Sorted by the Newest...</h3>
+   	{foundCars.map((v,index) => (
+   			<div key={v.id} class='column'>
+   			<div class='row'>
+   			
+   			<Link id={v.id}to={`/vehicles/${v.id}`} onClick={()=> this.props.vehicleDetail(v.id)}><div class ='card'>
 
-  if (this.props.foundCars && this.props.foundCars > 0){
-console.log("if existed")
+   	<p>#{index + 1}</p>
+	{v.year}--{v.make}
+					</div>
+					</Link>
+					</div>
+					</div>
+					))}</div>
+
+   }else{
+foundIt = <p>There is no vehicle(s) to display</p>
+   }
+
 		return(
 
-<table class="wish-list-table">
-			<div class="row">
-			<h2 id="car-header1">Search result found {foundCars[0].make}(s)</h2>
-		
-				{foundCars.map((v,index) => (
 
-			  <div  class="column" key={v.id}>
-			 	 
-				   
-				    <Link to={`/vehicles/${v.id}`}>
-					    <div class="card1"  >
-					    
-						    <h4>{v.year}, {v.make}, {v.color}</h4>
-						   
-					    </div>
-	               </Link>
 
-				<button>Remove</button>
-			 </div>
+			<div>
+			<table class="finders">
+			<td>
+			<h1 class="vehicle-finder-header">Vehicle Finder</h1>
+			{foundIt}
+			</td>
+			</table>
 
-	))}
-	</div>
-	</table>
-	)}else {
-		return(	<h2>Looking for a list of specific make?</h2> )
-		}
+			
+			</div>
+			)}
+}	
 
-}}
+
 
 const mapStateToProps = (state) =>{ 
 	return{
 		foundCars: state.foundVehicles
+
 	 }
 	}
+	const mapDispatchToProps = dispatch => ({
 
-export default connect(mapStateToProps, null)(FoundVehicleContainer);
+  vehicleDetail: vehicleId => dispatch({type: "VEHICLE_DETAIL",vehicleId})
+  
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(FoundVehicleContainer);

@@ -9,7 +9,6 @@ export function fetchVehicles(){
 }
 
 
-
 export const vehicleList = make => {
 
 	return{
@@ -17,7 +16,13 @@ export const vehicleList = make => {
 		make
 	}
 }
+export const vehicleDetail = vehicleId => {
 
+	return{
+		type: 'VEHICLE_DETAIL',
+		vehicleId
+	}
+}
 
 export const addToWishList = vehicleId => {
 
@@ -26,7 +31,7 @@ export const addToWishList = vehicleId => {
 		vehicleId
 	}
 }
-export const deleteFromWishList = vehicleId => {
+export const deleteFromWish = vehicleId => {
 
 	return{
 		type: 'DELETE_FROM_WISH',
