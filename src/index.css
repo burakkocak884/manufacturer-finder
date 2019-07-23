@@ -123,9 +123,9 @@ body {
 .card {
   float: left;
   box-shadow: 20px 4px 8px 0 rgba(0, 0, 0, 0.7); /* this adds the "card" effect */
-  padding: 30px;
-  text-align: center;
-  
+  padding: 10px;
+  text-align: left;
+
   
 
 }
