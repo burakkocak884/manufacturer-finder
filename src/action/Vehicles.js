@@ -1,18 +1,14 @@
-import manageVehicles from '../reducers/manageVehicle';
+
 
 
 export function fetchVehicles(){
-	console.log("c")
+	
 	 return (dispatch) => {
     dispatch({ type: 'START_GETTING_VEHICLES' });
     return fetch('http://localhost:3000/vehicles')
       .then(response => response.json())
-      .then(vehicles => {
-      	console.log("d")
-      	return dispatch({ type: 'FETCH_VEHICLES', vehicles})
- 	 });
-  };
-  console.log("e")
+      .then(vehicles =>  dispatch({ type: 'FETCH_VEHICLES', vehicles}));
+}
 }
 
 

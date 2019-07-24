@@ -48,7 +48,7 @@ this.setState({
 
 	render(){
 		
-		console.log("form at create cars",this.props)
+		
 
 		
 		return (
@@ -67,7 +67,8 @@ this.setState({
 			Sale Price: <input   type="text" onChange={this.handleChange} name='sale_price' placeholder="Sale Price"></input><br />
 			Click to <input type="submit" value ="Advertise Your Car"/>
 			
-			</form></td>
+			</form>
+			</td>
 			</table>
 			</div>
 

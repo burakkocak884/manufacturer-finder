@@ -4,7 +4,7 @@ import './App.css';
 import VehicleIndex from './container/VehicleIndex';
 import VehicleShow from './components/VehicleShow';
 import FoundVehicleContainer from './container/FoundVehicleContainer';
-import VehicleSearchForm from './components/VehicleSearchForm';
+
 import VehicleCreateForm from './components/VehicleCreateForm';
 
 import WishListContainer from './container/WishListContainer';
@@ -26,9 +26,9 @@ import { connect } from 'react-redux';
 
 
        componentDidMount(){
-        console.log("a")
+       
         this.props.fetchVehicles()
-        console.log("b")
+       
         //a-b-c-e-d
         // this.props.individualVehicle(this.props.carID)
       //      fetch("http://localhost:3000/vehicles")
@@ -50,20 +50,29 @@ import { connect } from 'react-redux';
       console.log("app.js vehicles=", this.props)
         return (
 <div class="main-display'">
+        
+<table>
+
         <Router>
           
            <Link to="/"><button>Home</button></Link>
             <Link to="/vehicles"><button>List of Available Cars</button></Link>
            
-            
+            <table class ='main-screen'>
+            <td>
+
+
             <FoundVehicleContainer  /> 
             <WishListContainer />
             <VehicleCreateForm />
+
+            </td>
+            </table>
             
             <Switch>
              <Route path="/vehicles/:id" render={()=>(<VehicleShow />)}/>
              <Route path="/vehicles" render={() => (<VehicleIndex />)}/> 
-             <Route path="/vehicles" render={() => (<VehicleCreateForm />)}/> 
+             
              <Route path="/vehicles/foundVehicles" render={() => (<FoundVehicleContainer  />)} />
              <Route path="/vehicles/wished" render={() => (<WishListContainer />) } />
            </Switch>
@@ -71,6 +80,7 @@ import { connect } from 'react-redux';
        
        
         </Router>
+        </table>
  </div>
     
   );

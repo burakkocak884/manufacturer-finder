@@ -17,29 +17,51 @@ class VehicleIndex extends Component {
 		 //  console.log('render at VehicleIndex=', this.props)
 		 // // console.log('wishlist array', this.state.wishCarHolder)
 	 	 const { thevehicles} = this.props
-	
-	return(
-		<div>
-		<table class="v-index">
-		<td>
-		
-		<div class= "column12">
+	 	
+	 let theList;
+  
+    if (thevehicles && thevehicles.length > 0){
+   	theList = 	<div>{thevehicles.map((v,index) => (
+   				<div class='column'>
+   				<div class='row'>
+   				
 
-		
+	<Link key={v.id} to={`/vehicles/${v.id}`} onClick={()=> this.props.vehicleDetail(v.id)}>
+	<div class ='card'>
+	<p>#{index + 1}</p>
+	{v.year}--{v.make}
+	</div>
+	</Link>
 	
-			
-			
-				{thevehicles.map(v => (
-	<Link to={`/vehicles/${v.id}`} onClick={()=> this.props.vehicleDetail(v.id)}><div class="row"><div class="card">{v.year}--{v.make}</div></div></Link>
 					
-					))}
-			
-		</div>
+				
+   			</div>
+   			</div>
 
-		</td>
-		</table>
-		</div>
-	)
+					))}
+
+   	</div>
+
+   }else{
+theList = <p>There is no vehicle(s) to display</p>
+   }
+
+		return(
+
+
+
+			<div>
+			<table class="finders">
+			<td>
+			<h1>All available Cars</h1>
+			{theList}
+			</td>
+			</table>
+			
+			</div>
+			)
+	
+
 }}
 
 

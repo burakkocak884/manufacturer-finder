@@ -5,7 +5,7 @@ export default function manageVehicle(state = {
   vehicles:[], foundVehicles: [],  theDetailCar: [], wishCarHolder: []
 }, action) {
 
-console.log('foundVehicles=',state)
+console.log('all vehicles=',state.vehicles)
 
   switch (action.type) {
       
@@ -18,6 +18,7 @@ console.log('foundVehicles=',state)
 
        
       case 'FIND_VEHICLES':
+      
       const myCar= state.vehicles.filter(vehicle => vehicle.make.toLowerCase() === action.make.toLowerCase())
      
       return{...state,foundVehicles: myCar }
@@ -43,12 +44,16 @@ console.log('foundVehicles=',state)
   
      return {wishCarHolder: newWishList}
 
-    
-     
+    case 'CREATE_VEHICLE':
+   console.log("brand new car", action.vehicle)
+   const theNewCar = action.vehicle
+   if(!state.vehicles){
+     return{...state, vehicles: state.vehicles.concat(theNewCar)}
+   }
 
 
-
-    default:
+break
+     default:
       return state;
 
   }

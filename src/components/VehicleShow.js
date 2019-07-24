@@ -1,7 +1,8 @@
 
 import React, {Component } from 'react';
 import {connect} from 'react-redux';
-
+import {Link}  from 'react-router-dom';
+import VehicleIndex from '../container/VehicleIndex';
 class VehicleShow extends Component{
 
 	
@@ -23,7 +24,7 @@ return(
 
 			<div class='individual-vehicle'>
 			<h4 class='wish-list-button'>Would you like to <button onClick={()=>this.props.addToWishList(theCar.id)}>Add to Wish List</button>?</h4>
-			<h1>Sale Price: ${theCar.sale_price}</h1>
+			<h1 class="price_tag">Sale Price: ${theCar.sale_price}</h1>
 			<table class='VehicleShow-table'>
 			<td>
 			{Object.entries(theCar).map(([key,value])=> <tr><td><span class="keys">{key}</span></td><td><span class="values">{value}</span></td></tr>)}
@@ -34,7 +35,10 @@ return(
 			
 			</div>
 
-			)}else{
+			)
+
+
+}else{
 	return (<h2>We haven't found any cars</h2>)
 }
 	}

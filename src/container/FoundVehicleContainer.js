@@ -31,7 +31,7 @@ class FoundVehicleContainer extends Component {
 					))}</div>
 
    }else{
-foundIt = <p>There is no vehicle(s) to display</p>
+foundIt = <p>Type name of a car maker in the form to find what you have been looking for.</p>
    }
 
 		return(

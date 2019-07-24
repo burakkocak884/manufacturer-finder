@@ -21,31 +21,26 @@ class WishListContainer extends Component {
 
        const{wishedCars} = this.props
        let foundIt;
-  
-    if (wishedCars && wishedCars.length > 0){
-   	foundIt = 	<div>{wishedCars.map((v,index) => (
-   				<div class='column'>
-   				<div class='row'>
-   				
+   if (wishedCars && wishedCars.length > 0){
+   	foundIt = 	<div>
+     <h2 class="cars-found'"><span id="car-header1">#{wishedCars.length} car(s) in your wish list.</span></h2>
+   	 <h3>Sorted by the Newest...</h3>
+   	{wishedCars.map((v,index) => (
+   			<div key={v.id} class='column'>
+   			<div class='row'>
+   			
+   			<Link id={v.id}to={`/vehicles/${v.id}`} onClick={()=> this.props.vehicleDetail(v.id)}><div class ='card'>
 
-	<Link to={`/vehicles/${v.id}`} onClick={()=> this.props.vehicleDetail(v.id)}>
-	<div class ='card'>
-	<p>#{index + 1}</p>
+   	<p>#{index + 1}</p>
 	{v.year}--{v.make}
-	</div>
-	</Link>
-	<button  onClick={()=> this.props.deleteFromWish(v.id)} >Remove</button>
-					
-				
-   			</div>
-   			</div>
-
-					))}
-
-   	</div>
+					</div>
+					</Link><button onClick={() => this.props.deleteFromWish(v.id)}>x</button>
+					</div>
+					</div>
+					))}</div>
 
    }else{
-foundIt = <p>There is no vehicle(s) to display</p>
+foundIt = <p>Your wish list is empty, but it doesn't have to be.</p>
    }
 
 		return(
@@ -55,16 +50,15 @@ foundIt = <p>There is no vehicle(s) to display</p>
 			<div>
 			<table class="finders">
 			<td>
-			<h1>My wish List</h1>
+			<h1 class="vehicle-finder-header">Wish List</h1>
+		
 			{foundIt}
 			</td>
 			</table>
+
 			
 			</div>
-			)
-	
-
-}}
+			)}}
 
 const mapStateToProps = state =>{
 	return{wishedCars: state.wishCarHolder}
@@ -74,7 +68,7 @@ const mapStateToProps = state =>{
 
 const mapDispatchToProps = dispatch => ({
   
-  deleteFromWishList: id => dispatch({type: "DELETE_FROM_WISH",id}),
+  // deleteFromWishList: id => dispatch({type: "DELETE_FROM_WISH",id}),
   vehicleDetail: vehicleId => dispatch({type: "VEHICLE_DETAIL",vehicleId}),
   deleteFromWish: vehicleId => dispatch({type: 'DELETE_FROM_WISH',vehicleId})
 })
