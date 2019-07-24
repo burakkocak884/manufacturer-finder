@@ -19,10 +19,7 @@ import { connect } from 'react-redux';
     class App extends Component{
       
 
-//           handleChange=(event)=>{
-//   this.setState({
-//   searchTerm: event.target.value
-
+//   
 // })
 // }
 
