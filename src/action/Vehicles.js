@@ -1,11 +1,39 @@
+import manageVehicles from '../reducers/manageVehicle';
+
 
 export function fetchVehicles(){
+	console.log("c")
 	 return (dispatch) => {
     dispatch({ type: 'START_GETTING_VEHICLES' });
     return fetch('http://localhost:3000/vehicles')
       .then(response => response.json())
-      .then(vehicles => dispatch({ type: 'FETCH_VEHICLES', vehicles}));
+      .then(vehicles => {
+      	console.log("d")
+      	return dispatch({ type: 'FETCH_VEHICLES', vehicles})
+ 	 });
   };
+  console.log("e")
+}
+
+
+export const createVehicle = (vehicle) =>{
+ 
+    return (dispatch) =>{
+        return fetch('http://localhost:3000/vehicles', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json'
+          },
+          body: JSON.stringify({
+            vehicle
+           
+          })
+        })
+          .then(resp => resp.json())
+          .then(vehicle => dispatch({type:"CREATE_VEHICLE", vehicle}))
+          .catch(error => console.error(error))
+    }
 }
 
 

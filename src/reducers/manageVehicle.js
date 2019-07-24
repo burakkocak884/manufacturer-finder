@@ -1,3 +1,6 @@
+import cuid from 'cuid';
+export const cuidFn = cuid;
+
 export default function manageVehicle(state = {
   vehicles:[], foundVehicles: [],  theDetailCar: [], wishCarHolder: []
 }, action) {
@@ -39,6 +42,8 @@ console.log('foundVehicles=',state)
      const newWishList = state.wishCarHolder.filter(c => c.id !== action.vehicleId)
   
      return {wishCarHolder: newWishList}
+
+    
      
 
 
