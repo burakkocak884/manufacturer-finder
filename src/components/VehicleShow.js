@@ -23,8 +23,11 @@ return(
 		
 
 			<div class='individual-vehicle'>
+			
+			
+			<h1>{theCar.year} {theCar.make} {theCar.model} {theCar.color}</h1>
+			<h2 class="price_tag">Sale Price: ${theCar.sale_price}</h2>
 			<h4 class='wish-list-button'>Would you like to <button onClick={()=>this.props.addToWishList(theCar.id)}>Add to Wish List</button>?</h4>
-			<h1 class="price_tag">Sale Price: ${theCar.sale_price}</h1>
 			<table class='VehicleShow-table'>
 			<td>
 			{Object.entries(theCar).map(([key,value])=> <tr><td><span class="keys">{key}</span></td><td><span class="values">{value}</span></td></tr>)}
@@ -39,7 +42,7 @@ return(
 
 
 }else{
-	return (<h2>We haven't found any cars</h2>)
+	return (<h2></h2>)
 }
 	}
 }

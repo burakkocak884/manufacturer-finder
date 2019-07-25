@@ -63,6 +63,7 @@ import { connect } from 'react-redux';
 
 
             <FoundVehicleContainer  /> 
+            <VehicleShow />
             <WishListContainer />
             <VehicleCreateForm />
 
@@ -70,7 +71,7 @@ import { connect } from 'react-redux';
             </table>
             
             <Switch>
-             <Route path="/vehicles/:id" render={()=>(<VehicleShow />)}/>
+             
              <Route path="/vehicles" render={() => (<VehicleIndex />)}/> 
              
              <Route path="/vehicles/foundVehicles" render={() => (<FoundVehicleContainer  />)} />

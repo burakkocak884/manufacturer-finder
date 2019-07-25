@@ -22,14 +22,13 @@ class VehicleIndex extends Component {
   
     if (thevehicles && thevehicles.length > 0){
    	theList = 	<div>{thevehicles.map((v,index) => (
-   				<div class='column'>
-   				<div class='row'>
+   				<div class='column-index'>
+   				<div class='row-index'>
    				
 
 	<Link key={v.id} to={`/vehicles/${v.id}`} onClick={()=> this.props.vehicleDetail(v.id)}>
-	<div class ='card'>
-	<p>#{index + 1}</p>
-	{v.year}--{v.make}
+	<div class ='card-index'>
+	<p>{v.year} {v.make}</p>
 	</div>
 	</Link>
 	
