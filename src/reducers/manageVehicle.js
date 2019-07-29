@@ -2,12 +2,18 @@ import cuid from 'cuid';
 export const cuidFn = cuid;
 
 export default function manageVehicle(state = {
-  vehicles:[], foundVehicles: [],  theDetailCar: [], wishCarHolder: []
+  vehicles:[], foundVehicles: [],  theDetailCar: [], wishCarHolder: [], loading: false
 }, action) {
 
 console.log('all vehicles=',state.vehicles)
 
   switch (action.type) {
+
+
+    case 'START_GETTING_VEHICLES':
+    console.log("loading vehicles=", state)
+     return {...state, loading: true}
+
       
 
 
@@ -19,8 +25,9 @@ console.log('all vehicles=',state.vehicles)
        
       case 'FIND_VEHICLES':
       
-      const myCar= state.vehicles.filter(vehicle => vehicle.make.toLowerCase() === action.make.toLowerCase())
-     
+   
+      const myCar= state.vehicles.filter(vehicle => (vehicle.make.toLowerCase() === action.searchVehicle.make.toLowerCase() && vehicle.year === action.searchVehicle.year))
+      debugger
       return{...state,foundVehicles: myCar }
     
       case 'VEHICLE_DETAIL':
@@ -50,7 +57,9 @@ console.log('all vehicles=',state.vehicles)
    if(!state.vehicles){
      return{...state, vehicles: state.vehicles.concat(theNewCar)}
    }
-
+   case "DELETE_VEHICLE":
+   const newList = state.vehicles.filter(v => v.id !== action.vehicleId)
+ return newList;
 
 break
      default:

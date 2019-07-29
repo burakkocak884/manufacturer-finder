@@ -6,7 +6,8 @@ class VehicleSearchForm extends Component{
 super(props)
 
 this.state={
-	searchTerm1:''
+	year: 0,
+	make: ''
 }
 }
 
@@ -14,7 +15,7 @@ this.state={
 		handleChange = event =>{
 this.setState({
 
-	searchTerm1: event.target.value
+	[event.target.name]: event.target.value
 })
 
 		}
@@ -22,11 +23,14 @@ this.setState({
 		handleSubmit = event =>{
 			
 			event.preventDefault()
-			if (this.state.searchTerm1 !== ''){
-			this.props.findVehicles(this.state.searchTerm1)
+			this.state.year = parseInt(this.state.year)
+			debugger
+			this.props.findVehicles(this.state)
 			this.setState({
-				searchTerm1: ''
-			})}
+				year: 0,
+				make:''
+				
+			})
 
 			
 
@@ -48,9 +52,10 @@ this.setState({
             <br />
 			
 			<form onSubmit={this.handleSubmit} >
-			<input   type="text" onChange={this.handleChange} value={this.state.searchTerm1}></input>
 			
-			<input type="submit" value ="Find List of Specific Car(s)" onClick={()=>this.props.findVehicles(this.state.searchTerm1)}/>
+			Year: <input   type="number" onChange={this.handleChange} name='year' placeholder="1900-2020"></input><br />
+			Make: <input   type="text" onChange={this.handleChange} name='make' placeholder="Make"></input><br />
+			<input type="submit" value ="Find List of Specific Car(s)" />
 			
 			</form>
 			</div>
@@ -68,7 +73,7 @@ this.setState({
 
 const mapDispatchToProps = dispatch => ({
   
-  findVehicles: make => dispatch({type: "FIND_VEHICLES",make})
+  findVehicles: searchVehicle => dispatch({type: "FIND_VEHICLES",searchVehicle})
 })
 export default connect(null,mapDispatchToProps)(VehicleSearchForm);
 

@@ -1,8 +1,8 @@
 
 import React, {Component } from 'react';
 import {connect} from 'react-redux';
-import {Link}  from 'react-router-dom';
-import VehicleIndex from '../container/VehicleIndex';
+
+
 class VehicleShow extends Component{
 
 	
@@ -42,7 +42,9 @@ return(
 
 
 }else{
-	return (<h2></h2>)
+	return (
+		<h2>Select a vehicle to see details...</h2>
+		)
 }
 	}
 }

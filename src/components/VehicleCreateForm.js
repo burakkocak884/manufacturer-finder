@@ -6,7 +6,7 @@ class VehicleCreateForm extends Component{
 super(props)
 
 this.state={
-	year: 2000,
+	year: 0,
 	make:'',
 	model:'',
 	color: '',
@@ -26,6 +26,19 @@ this.setState({
 		handleSubmit = event =>{
 			
 			event.preventDefault()
+
+
+this.state.year = parseInt(this.state.year)
+this.state.mileage = parseInt(this.state.mileage)
+this.state.sale_price= parseInt(this.state.sale_price)
+
+
+
+
+this.state.year = parseInt(this.state.year)
+this.state.mileage = parseInt(this.state.mileage)
+this.state.sale_price= parseInt(this.state.sale_price)
+
 			
 			this.props.createVehicle(this.state)
 			this.setState({
@@ -56,18 +69,20 @@ this.setState({
 			<table>
 			<td>
             <br />
+            <div class="vehicle-create-form">
 			<h1>Do you have a car to sell?</h1>
 			<h2>Go ahead and fill/submit the form below</h2>
 			<form onSubmit={this.handleSubmit} >
-			Year: <input   type="text" onChange={this.handleChange} name='year' placeholder="1990-2019"></input><br />
-			Make: <input   type="text" onChange={this.handleChange} name='make' placeholder="Make"></input><br />
-			Model: <input   type="text" onChange={this.handleChange} name='model' placeholder="Model"></input><br />
-			Color: <input   type="text" onChange={this.handleChange} name='color' placeholder="Color"></input><br />
-			Mileage: <input   type="text" onChange={this.handleChange} name='mileage' placeholder="Mileage"></input><br />
-			Sale Price: <input   type="text" onChange={this.handleChange} name='sale_price' placeholder="Sale Price"></input><br />
+			Year: <input   type="number" onChange={this.handleChange} name='year' ></input><br />
+			Make: <input   type="text" onChange={this.handleChange} name='make' placeholder="Make" required></input><br />
+			Model: <input   type="text" onChange={this.handleChange} name='model' placeholder="Model" required></input><br />
+			Color: <input   type="text" onChange={this.handleChange} name='color' placeholder="Color" required></input><br />
+			Mileage: <input   type="number" onChange={this.handleChange} name='mileage' placeholder="Mileage" required></input><br />
+			Sale Price: <input   type="number" onChange={this.handleChange} name='sale_price' placeholder="Sale Price" required></input><br />
 			Click to <input type="submit" value ="Advertise Your Car"/>
 			
 			</form>
+			</div>
 			</td>
 			</table>
 			</div>

@@ -1,6 +1,6 @@
 
 import React, { Component} from 'react';
-
+import {deleteVehicle, vehicleDetail} from '../action/Vehicles'
 import { connect } from 'react-redux';
 import  {Link} from 'react-router-dom';
 
@@ -10,6 +10,7 @@ import  {Link} from 'react-router-dom';
 class VehicleIndex extends Component {
 		
 
+		
 
 	render(){
 
@@ -22,7 +23,7 @@ class VehicleIndex extends Component {
   
     if (thevehicles && thevehicles.length > 0){
    	theList = 	<div>{thevehicles.map((v,index) => (
-   				<div class='column-index'>
+   				<div key={v.id} class='column-index'>
    				<div class='row-index'>
    				
 
@@ -30,7 +31,7 @@ class VehicleIndex extends Component {
 	<div class ='card-index'>
 	<p>{v.year} {v.make}</p>
 	</div>
-	</Link>
+	</Link><button onClick={() => this.props.deleteVehicle(v.id)}>X</button>
 	
 					
 				
@@ -49,15 +50,17 @@ theList = <p>There is no vehicle(s) to display</p>
 
 
 
-			<div>
-			<table class="finders">
-			<td>
+		
+			
+			
+			<div class="vehicle-create-form">
 			<h1>All available Cars</h1>
 			{theList}
-			</td>
-			</table>
-			
 			</div>
+			
+		
+			
+		
 			)
 	
 
@@ -70,12 +73,7 @@ const mapStateToProps = (state) =>{
 	}
 	 }
 
-const mapDispatchToProps = dispatch => ({
 
-  vehicleDetail: vehicleId => dispatch({type: "VEHICLE_DETAIL",vehicleId})
-  
-})
 
-export default connect(mapStateToProps, mapDispatchToProps)(VehicleIndex)
-
+export default connect(mapStateToProps, {vehicleDetail, deleteVehicle})(VehicleIndex)
 

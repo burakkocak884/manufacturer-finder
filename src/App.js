@@ -19,22 +19,27 @@ import { connect } from 'react-redux';
 
     class App extends Component{
       
+componentDidMount(){
+
+
+  this.props.fetchVehicles()
+//    this.interval = setInterval(() =>{
+//   this.props.fetchVehicles()
+// },250)
+}
 
 //   
 // })
 // }
 
 
-       componentDidMount(){
-       
-        this.props.fetchVehicles()
-       
+     
         //a-b-c-e-d
         // this.props.individualVehicle(this.props.carID)
       //      fetch("http://localhost:3000/vehicles")
       //      .then(res => res.json())
       //      .then(vehicles => this.setState({vehicles}))
-          }
+          
            
 
 
@@ -73,7 +78,7 @@ import { connect } from 'react-redux';
             <Switch>
              
              <Route path="/vehicles" render={() => (<VehicleIndex />)}/> 
-             
+             <Route path="/vehicles/:id" render={() => (<VehicleShow />)}/> 
              <Route path="/vehicles/foundVehicles" render={() => (<FoundVehicleContainer  />)} />
              <Route path="/vehicles/wished" render={() => (<WishListContainer />) } />
            </Switch>

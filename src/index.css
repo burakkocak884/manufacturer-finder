@@ -223,6 +223,9 @@ background-size: cover;
    padding: 2px 16px;
 
 }
+.vehicle-create-form{
+  padding: 30px 30px;
+}
 
 
 /* Responsive columns - one column layout (vertical) on small screens */

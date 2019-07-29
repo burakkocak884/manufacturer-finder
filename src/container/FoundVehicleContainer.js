@@ -9,13 +9,13 @@ class FoundVehicleContainer extends Component {
 		
 
 
-		console.log("props",this.props)
+		// console.log("props",this.props)
        const{foundCars} = this.props
        let foundIt;
    if (foundCars && foundCars.length > 0){
    	foundIt = 	<div>
      <h2 class="cars-found'"><span id="car-header1">{foundCars.length}</span> {foundCars[0].make}(s) Found!!!</h2>
-   	 <h3>Sorted by the Newest...</h3>
+   	 
    	{foundCars.map((v,index) => (
    			<div key={v.id} class='column'>
    			<div class='row'>
@@ -41,9 +41,11 @@ foundIt = <p>Type name of a car maker in the form to find what you have been loo
 			<div>
 			<table class="finders">
 			<td>
+			<div class="vehicle-create-form">
 			<h1 class="vehicle-finder-header">Vehicle Finder</h1>
 			 <VehicleSearchForm />
 			{foundIt}
+			</div>
 			</td>
 			</table>
 

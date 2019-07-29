@@ -2,13 +2,14 @@
 
 
 export function fetchVehicles(){
-	
+	  
 	 return (dispatch) => {
     dispatch({ type: 'START_GETTING_VEHICLES' });
     return fetch('http://localhost:3000/vehicles')
       .then(response => response.json())
       .then(vehicles =>  dispatch({ type: 'FETCH_VEHICLES', vehicles}));
 }
+
 }
 
 
@@ -62,5 +63,26 @@ export const deleteFromWish = vehicleId => {
 		vehicleId
 	}
 }
+export const deleteVehicle = vehicleId => {
+
+  return (dispatch) =>{
+        return fetch('http://localhost:3000/vehicles/'+ vehicleId, {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json'
+          },
+          body: JSON.stringify({
+            vehicleId
+           
+          })
+        })
+          .then(resp => resp.json())
+          .then(vehicle => dispatch({type:"DELETE_VEHICLE", vehicleId}))
+          .catch(error => console.error(error))
+    }
+}
+
+
 
 

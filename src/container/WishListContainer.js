@@ -50,9 +50,11 @@ foundIt = <p>Your wish list is empty, but it doesn't have to be.</p>
 			<div>
 			<table class="finders">
 			<td>
+			<div class="vehicle-create-form">
 			<h1 class="vehicle-finder-header">Wish List</h1>
 		
 			{foundIt}
+			</div>
 			</td>
 			</table>
 
