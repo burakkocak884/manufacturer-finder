@@ -24,19 +24,27 @@ class VehicleIndex extends Component {
     if (thevehicles && thevehicles.length > 0){
    	theList = 	<div>{thevehicles.map((v,index) => (
    				<div key={v.id} class='column-index'>
+   				<Link key={v.id} to={`/vehicles/${v.id}`} onClick={()=> this.props.vehicleDetail(v.id)}>
    				<div class='row-index'>
    				
 
-	<Link key={v.id} to={`/vehicles/${v.id}`} onClick={()=> this.props.vehicleDetail(v.id)}>
+	
 	<div class ='card-index'>
 	<p>{v.year} {v.make}</p>
+	
 	</div>
-	</Link><button onClick={() => this.props.deleteVehicle(v.id)}>X</button>
+	
+	  
+	
 	
 					
 				
    			</div>
+   			</Link>
+   			<button onClick={() => this.props.deleteVehicle(v.id)}>X</button>
+           
    			</div>
+   			
 
 					))}
 

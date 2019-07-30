@@ -20,6 +20,9 @@ code {
   width: 100%;
   background-color: #ffffff90 ;
 }
+.detail-button{
+  float: bottom;
+}
 .keys: {
 	font-weight: bold;
 	color: brown;
@@ -35,7 +38,7 @@ table td{
 border: 4px solid  #D5634A;
 background-color: #ffffff90
 }
-.VehicleShow-table td{
+.VehicleShow-table{
 border: 2px solid  #D5634A;
 background-color: #ffffff90
 }

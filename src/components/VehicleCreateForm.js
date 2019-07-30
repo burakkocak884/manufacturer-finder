@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { connect} from 'react-redux';
 import {createVehicle} from '../action/Vehicles'
+import {Form, Button} from 'semantic-ui-react';
 class VehicleCreateForm extends Component{
 	constructor(props){
 super(props)
@@ -72,16 +73,52 @@ this.state.sale_price= parseInt(this.state.sale_price)
             <div class="vehicle-create-form">
 			<h1>Do you have a car to sell?</h1>
 			<h2>Go ahead and fill/submit the form below</h2>
-			<form onSubmit={this.handleSubmit} >
-			Year: <input   type="number" onChange={this.handleChange} name='year' ></input><br />
-			Make: <input   type="text" onChange={this.handleChange} name='make' placeholder="Make" required></input><br />
-			Model: <input   type="text" onChange={this.handleChange} name='model' placeholder="Model" required></input><br />
-			Color: <input   type="text" onChange={this.handleChange} name='color' placeholder="Color" required></input><br />
-			Mileage: <input   type="number" onChange={this.handleChange} name='mileage' placeholder="Mileage" required></input><br />
-			Sale Price: <input   type="number" onChange={this.handleChange} name='sale_price' placeholder="Sale Price" required></input><br />
-			Click to <input type="submit" value ="Advertise Your Car"/>
+
+
+			<Form>
+				<Form.Field>
+					<label>Year</label>
+					<input   type="number" onChange={this.handleChange} name='year' placeholder="1900-2020"/>
+				</Form.Field>
+
+				<Form.Field>
+					<label>Make</label>
+					<input   type="text" onChange={this.handleChange} name='make' placeholder="Make"/>
+				</Form.Field>
+
+				<Form.Field>
+					<label>Model</label>
+					<input   type="text" onChange={this.handleChange} name='model' placeholder="Model"/>
+				</Form.Field>
+
+
+				<Form.Field>
+					<label>Color</label>
+					<input   type="text" onChange={this.handleChange} name='color' placeholder="Color"/>
+				</Form.Field>
+
+				<Form.Field>
+					<label>Mileage</label>
+					<input   type="text" onChange={this.handleChange} name='mileage' placeholder="Mileage"/>
+				</Form.Field>
+
+
+				<Form.Field>
+					<label>Sale Price($)</label>
+					<input   type="text" onChange={this.handleChange} name='sale_price' placeholder="Sale Price"/>
+				</Form.Field>
+
+
+
+
+
 			
-			</form>
+			
+  				<Form.Field>
+					<Button type="submit" onClick={this.handleSubmit}>Let's Create A <i class="fas fa-car"></i> ForSale</Button>
+				 </Form.Field>
+
+		</Form>
 			</div>
 			</td>
 			</table>

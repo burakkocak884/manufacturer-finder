@@ -18,60 +18,57 @@ import { connect } from 'react-redux';
 
 
     class App extends Component{
-      
-componentDidMount(){
 
 
-  this.props.fetchVehicles()
-//    this.interval = setInterval(() =>{
-//   this.props.fetchVehicles()
-// },250)
-}
-
-//   
-// })
-// }
-
-
+//    getDerivedStateFromProps(){
+    
+//         // this.props.fetchVehicles()
+// console.log('a')
+//             this.interval = setInterval(() =>{
+//         this.props.fetchVehicles()
+//       },250)
      
-        //a-b-c-e-d
-        // this.props.individualVehicle(this.props.carID)
-      //      fetch("http://localhost:3000/vehicles")
-      //      .then(res => res.json())
-      //      .then(vehicles => this.setState({vehicles}))
-          
-           
+//    }
 
 
-          
-           
 
-           
+      
+      componentDidMount(){
+        console.log('b')
+        this.props.fetchVehicles()
+      //    this.interval = setInterval(() =>{
+      //   this.props.fetchVehicles()
+      // },250)
+      
+      }
+
 
            
 
 
     render(){
-      console.log("app.js vehicles=", this.props)
+      console.log('c')
+      // console.log("app.js vehicles=", this.props)
         return (
 <div class="main-display'">
         
-<table>
 
         <Router>
           
            <Link to="/"><button>Home</button></Link>
             <Link to="/vehicles"><button>List of Available Cars</button></Link>
-           
+           <table>
+
             <table class ='main-screen'>
             <td>
 
 
             <FoundVehicleContainer  /> 
-            <VehicleShow />
+            
             <WishListContainer />
             <VehicleCreateForm />
-
+            <VehicleShow />
+            <VehicleIndex />
             </td>
             </table>
             
@@ -83,10 +80,10 @@ componentDidMount(){
              <Route path="/vehicles/wished" render={() => (<WishListContainer />) } />
            </Switch>
 
-       
+       </table>
        
         </Router>
-        </table>
+        
  </div>
     
   );

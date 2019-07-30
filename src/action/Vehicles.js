@@ -2,13 +2,15 @@
 
 
 export function fetchVehicles(){
-	  
+	  console.log('d')
 	 return (dispatch) => {
     dispatch({ type: 'START_GETTING_VEHICLES' });
     return fetch('http://localhost:3000/vehicles')
       .then(response => response.json())
       .then(vehicles =>  dispatch({ type: 'FETCH_VEHICLES', vehicles}));
+
 }
+
 
 }
 

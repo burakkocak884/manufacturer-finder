@@ -5,13 +5,13 @@ export default function manageVehicle(state = {
   vehicles:[], foundVehicles: [],  theDetailCar: [], wishCarHolder: [], loading: false
 }, action) {
 
-console.log('all vehicles=',state.vehicles)
+// console.log('all vehicles=',state.vehicles)
 
   switch (action.type) {
 
 
     case 'START_GETTING_VEHICLES':
-    console.log("loading vehicles=", state)
+    // console.log("loading vehicles=", state)
      return {...state, loading: true}
 
       
@@ -19,7 +19,7 @@ console.log('all vehicles=',state.vehicles)
 
        case 'FETCH_VEHICLES':
        // console.log('vehicles in action=',action.vehicles)
-       console.log("action=",action)
+       // console.log("action=",action)
        return {vehicles: action.vehicles};
 
        
@@ -27,7 +27,7 @@ console.log('all vehicles=',state.vehicles)
       
    
       const myCar= state.vehicles.filter(vehicle => (vehicle.make.toLowerCase() === action.searchVehicle.make.toLowerCase() && vehicle.year === action.searchVehicle.year))
-      debugger
+      
       return{...state,foundVehicles: myCar }
     
       case 'VEHICLE_DETAIL':
@@ -52,7 +52,7 @@ console.log('all vehicles=',state.vehicles)
      return {wishCarHolder: newWishList}
 
     case 'CREATE_VEHICLE':
-   console.log("brand new car", action.vehicle)
+   // console.log("brand new car", action.vehicle)
    const theNewCar = action.vehicle
    if(!state.vehicles){
      return{...state, vehicles: state.vehicles.concat(theNewCar)}
@@ -61,7 +61,7 @@ console.log('all vehicles=',state.vehicles)
    const newList = state.vehicles.filter(v => v.id !== action.vehicleId)
  return newList;
 
-break
+   
      default:
       return state;
 

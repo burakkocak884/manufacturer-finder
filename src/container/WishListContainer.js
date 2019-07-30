@@ -17,7 +17,7 @@ class WishListContainer extends Component {
 	render(){
 
 
-		console.log("cars wished",this.props)
+		// console.log("cars wished",this.props)
 
        const{wishedCars} = this.props
        let foundIt;
