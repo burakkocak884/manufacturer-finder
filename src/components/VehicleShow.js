@@ -2,6 +2,8 @@
 import React, {Component } from 'react';
 import {connect} from 'react-redux';
 import {Table} from 'semantic-ui-react';
+import CommentContainer from './CommentContainer';
+
 
 class VehicleShow extends Component{
 
@@ -47,18 +49,21 @@ return(
 
 			</Table>
 
-			
+			<CommentContainer />
 			
 			</div>
+			
 
 			)
 
 
 }else{
 	return (
-		<h2>Select a vehicle to see details...</h2>
+		<h2>Select a Car to see details...</h2>
 		)
 }
+
+
 	}
 }
 const mapStateToProps = state =>{

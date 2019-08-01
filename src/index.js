@@ -5,14 +5,17 @@ import App from './App';
 import thunk from 'redux-thunk';
 import manageVehicle from './reducers/manageVehicle.js';
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware, compose } from 'redux';
+import { createStore, applyMiddleware, compose,combineReducers } from 'redux';
 
 
 
 
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose  
-let store = createStore(manageVehicle, composeEnhancers(applyMiddleware(thunk))) 
+
+
+
+const store = createStore(manageVehicle, composeEnhancers(applyMiddleware(thunk))) 
 
 
 ReactDOM.render(

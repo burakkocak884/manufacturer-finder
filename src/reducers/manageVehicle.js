@@ -2,7 +2,7 @@ import cuid from 'cuid';
 export const cuidFn = cuid;
 
 export default function manageVehicle(state = {
-  vehicles:[], foundVehicles: [],  theDetailCar: [], wishCarHolder: [], loading: false
+  vehicles:[], foundVehicles: [],  theDetailCar: [], wishCarHolder: [], loading: false,manufacturers:[]
 }, action) {
 
 // console.log('all vehicles=',state.vehicles)
@@ -61,10 +61,32 @@ export default function manageVehicle(state = {
    const newList = state.vehicles.filter(v => v.id !== action.vehicleId)
  return newList;
 
+ case'FETCH_MANUFACTURERS':
+
+ return{vehicleManufacturers: action.vehicleManufacturers.Results}
    
+
+
+   case 'FIND_MANUFACTURER':
+  
+   const manufacturer = state.vehicleManufacturers.filter(m => (" "+m.Make_Name.toLowerCase()+" ").includes(" "+action.manu.toLowerCase()+" "))
+
+
+    
+    
+   
+    
+     return {...state,manufacturers: manufacturer};
+   
+
+
+   
+     
+
      default:
       return state;
 
   }
    
 };
+

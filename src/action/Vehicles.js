@@ -2,13 +2,16 @@
 
 
 export function fetchVehicles(){
-	  console.log('d')
+	  console.log('c')
 	 return (dispatch) => {
     dispatch({ type: 'START_GETTING_VEHICLES' });
     return fetch('http://localhost:3000/vehicles')
       .then(response => response.json())
-      .then(vehicles =>  dispatch({ type: 'FETCH_VEHICLES', vehicles}));
-
+      .then(vehicles =>  {
+        console.log('d')
+        dispatch({ type: 'FETCH_VEHICLES', vehicles})
+      });
+    console.log('e')
 }
 
 
@@ -84,6 +87,31 @@ export const deleteVehicle = vehicleId => {
           .catch(error => console.error(error))
     }
 }
+
+export function vehicleManufacturers(){
+  
+   return (dispatch) => {
+    dispatch({ type: 'START_GETTING_MANUFACTURERS' });
+    return fetch('https://vpic.nhtsa.dot.gov/api/vehicles/getallmakes?format=json')
+      .then(response => response.json())
+      .then(vehicleManufacturers =>  {
+        console.log('vehicle makers=',vehicleManufacturers)
+        dispatch({ type: 'FETCH_MANUFACTURERS', vehicleManufacturers})
+      });
+    
+}
+
+
+}
+export const findManufacturer = manu => {
+
+  return{
+    type: 'FIND_MANUFACTURER',
+    manu
+  }
+}
+
+
 
 
 

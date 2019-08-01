@@ -9,7 +9,7 @@ import  {Link} from 'react-router-dom';
 
 class VehicleIndex extends Component {
 		
-
+ 
 		
 
 	render(){
@@ -23,34 +23,23 @@ class VehicleIndex extends Component {
   
     if (thevehicles && thevehicles.length > 0){
    	theList = 	<div>{thevehicles.map((v,index) => (
-   				<div key={v.id} class='column-index'>
-   				<Link key={v.id} to={`/vehicles/${v.id}`} onClick={()=> this.props.vehicleDetail(v.id)}>
-   				<div class='row-index'>
-   				
+	   				<div key={v.id} class='column-index'>
+		   				<Link key={v.id} to={`/vehicles/${v.id}`} onClick={()=> this.props.vehicleDetail(v.id)}>
+			   				<div class='row-index'>
+				   				<div class ='card-index'>
+										<p>{v.year} {v.make}</p>
+										
+								</div>
+							</div>
+		   				</Link>
+		   				<button onClick={() => this.props.deleteVehicle(v.id)}>X</button>
+	           
+	   				</div>
+   				))}
 
-	
-	<div class ='card-index'>
-	<p>{v.year} {v.make}</p>
-	
-	</div>
-	
-	  
-	
-	
-					
-				
-   			</div>
-   			</Link>
-   			<button onClick={() => this.props.deleteVehicle(v.id)}>X</button>
-           
-   			</div>
-   			
+   				</div>
 
-					))}
-
-   	</div>
-
-   }else{
+   	}else{
 theList = <p>There is no vehicle(s) to display</p>
    }
 
@@ -62,8 +51,8 @@ theList = <p>There is no vehicle(s) to display</p>
 			
 			
 			<div class="vehicle-create-form">
-			<h1>All available Cars</h1>
-			{theList}
+				<h1>All available Cars</h1>
+				{theList}
 			</div>
 			
 		

@@ -42,7 +42,7 @@ foundIt = <p>Type name of a car maker in the form to find what you have been loo
 			<table class="finders">
 			<td>
 			<div class="vehicle-create-form">
-			<h1 class="vehicle-finder-header">Vehicle Finder</h1>
+			<h1 class="vehicle-finder-header">Car Finder</h1>
 			 <VehicleSearchForm />
 			{foundIt}
 			</div>
