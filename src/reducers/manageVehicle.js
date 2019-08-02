@@ -61,22 +61,22 @@ export default function manageVehicle(state = {
    const newList = state.vehicles.filter(v => v.id !== action.vehicleId)
  return newList;
 
- // case'FETCH_MANUFACTURERS':
+ case'FETCH_MANUFACTURERS':
 
- // return{vehicleManufacturers: action.vehicleManufacturers.Results}
+ return{vehicleManufacturers: action.vehicleManufacturers.Results}
    
 
 
- //   case 'FIND_MANUFACTURER':
+   case 'FIND_MANUFACTURER':
   
- //   const manufacturer = state.vehicleManufacturers.filter(m => (" "+m.Make_Name.toLowerCase()+" ").includes(" "+action.manu.toLowerCase()+" "))
+   const manufacturer = state.vehicleManufacturers.filter(m => (" "+m.Make_Name.toLowerCase()+" ").includes(" "+action.manu.toLowerCase()+" "))
 
 
     
     
    
     
- //     return {...state,manufacturers: manufacturer};
+     return {...state,manufacturers: manufacturer};
    
 
 
