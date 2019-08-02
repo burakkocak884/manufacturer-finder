@@ -9,7 +9,7 @@ class FoundManufacturerContainer extends Component {
 		 console.log("props",this.props)
        const{foundManufacturers} = this.props
        let foundIt;
-    
+
    if (foundManufacturers && foundManufacturers.length > 0){
    	let sortedM = this.props.foundManufacturers.sort(function(a,b){
 			
@@ -48,15 +48,11 @@ foundIt = <p>Type a year and name of a manufacturer  in the form to list if any 
 
 
 			<div>
-			<table >
-			<td>
-			<div >
+			
 			<h1>Manufacturer's Product Finder</h1>
 			 <VehicleSearchForm />
 			{foundIt}
-			</div>
-			</td>
-			</table>
+			
 
 			
 			</div>

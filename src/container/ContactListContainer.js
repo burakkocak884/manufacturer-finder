@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Link}  from 'react-router-dom';
 import { connect } from 'react-redux';
+import {deleteContact} from '../action/Vehicles';
 class ContactListContainer extends Component {
 
  
@@ -28,15 +29,24 @@ class ContactListContainer extends Component {
 		return(
 				<div>
 				<h1>Contact List:</h1>
-					<ul>
+					
+						<div class = 'row'>
+						  
+						  	
+
+					   
 							{sortedContact.map(c =>(
-								<li>ID #{c.Make_ID} -->  {c.Make_Name}</li>
+								<div class = 'column'><div class = 'card'><h1>ID# {c.Make_ID}</h1>  <h3>{c.Make_Name}</h3><button onClick={()=> this.props.deleteContact(c.Make_ID)}>X</button></div></div>
 								))}
+					  
+					  		
+					  			
+					  		
+						 </div>
 
 
 
-				
-		            </ul>
+
 				</div>
 			)
 	}else{
@@ -58,4 +68,4 @@ const mapStateToProps = state =>{
   
   
 
-export default connect(mapStateToProps)(ContactListContainer);
+export default connect(mapStateToProps,{deleteContact})(ContactListContainer);

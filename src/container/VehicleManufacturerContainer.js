@@ -73,9 +73,9 @@ if(this.props.vehicleMakers){
 
 			  <p>----------------------------------------------------------------------------------</p>
 			  <h2>Click on a manufacturer to add to your contact list</h2>
-			   {this.props.manufacturers ? <ul>{this.props.manufacturers.map(m=>(<Link to={`/vehicle_manufacturers/${m.Make_ID}`} onClick={()=>this.props.addToContactList(m)}><li>{m.Make_Name}</li></Link>
+			  <div class="selected-manus"> {this.props.manufacturers ? <ul>{this.props.manufacturers.map(m=>(<Link to={`/vehicle_manufacturers/${m.Make_ID}`} onClick={()=>this.props.addToContactList(m)}><li>{m.Make_Name}</li></Link>
 			   	))}</ul> : <p>Search is empty</p>
-			   }
+			   }</div>
 			    <p>----------------------------------------------------------------------------------</p>
 			   
 			
@@ -97,7 +97,7 @@ if(this.props.vehicleMakers){
 
 			)}
 		else{
-			return(<h4>No info</h4>)
+			return(<h4></h4>)
 		}
 	}
 } 

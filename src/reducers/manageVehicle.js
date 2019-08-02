@@ -10,45 +10,27 @@ export default function manageVehicle(state = {
   switch (action.type) {
 
 
-      case 'START_GETTING_VEHICLES':
-      // console.log("loading vehicles=", state)
-     return {...state, loading: true}
-
+     
       
 
 
-       case 'FETCH_VEHICLES':
-       // console.log('vehicles in action=',action.vehicles)
-       // console.log("action=",action)
-       return {vehicles: action.vehicles};
-
+      
 
        case 'FOUND_MANUFACTURERS':
      
        return {foundManufacturers: action.foundManufacturers.Results}
 
        
-      case 'FIND_VEHICLES':
-      const myCar= state.vehicles.filter(vehicle => (vehicle.make.toLowerCase() === action.searchVehicle.make.toLowerCase() && vehicle.year === action.searchVehicle.year))
-      return{...state,foundVehicles: myCar }
+      
     
-      case 'VEHICLE_DETAIL':
-      const theCar = state.vehicles.find(vehicle => vehicle.id === action.vehicleId)
-      return {...state, theDetailCar: theCar};
 
 
 
-      case 'ADD_TO_WISH':
-       if(!state.wishCarHolder){
-           return {...state,wishCarHolder: [state.theDetailCar]};
-       }else{
-       	 return {...state,wishCarHolder: [...state.wishCarHolder, state.theDetailCar]};
-       }
 
-
-      case 'DELETE_FROM_WISH':
-      const newWishList = state.wishCarHolder.filter(c => c.id !== action.vehicleId)
-      return {wishCarHolder: newWishList}
+      case 'DELETE_FROM_CONTACT':
+      debugger
+      const newContactList = state.contactList.filter(c => c.Make_ID !== action.conId)
+      return {contactList: newContactList}
 
        case 'CREATE_VEHICLE':
       // console.log("brand new car", action.vehicle)
@@ -77,7 +59,11 @@ export default function manageVehicle(state = {
   if(!state.contactList){
     return{...state,contactList: [action.cManu]}
 }else{
+  const existManu = state.contactList.find(e => e.Make_ID === action.cManu.Make_ID)
+  if(!existManu){
   return{...state,contactList: [...state.contactList, action.cManu]}
+}
+
 }
 
    
