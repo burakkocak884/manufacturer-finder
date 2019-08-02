@@ -1,7 +1,7 @@
 import React,{Component}from 'react';
 import {connect} from 'react-redux';
 import {Form, Button} from 'semantic-ui-react';
-import {findManufacturer, manufacturerDetails} from '../action/Vehicles'
+import {findManufacturer, addToContactList} from '../action/Vehicles'
 import  {Link} from 'react-router-dom';
 class VehicleManufacturerContainer extends Component {
 	constructor(props){
@@ -18,6 +18,8 @@ this.state={
 
 		})
 	}
+	
+
 
 	handleSubmit = (event) =>{
 		event.preventDefault()
@@ -70,7 +72,8 @@ if(this.props.vehicleMakers){
 
 
 			  <p>----------------------------------------------------------------------------------</p>
-			   {this.props.manufacturers ? <ul>{this.props.manufacturers.map(m=>(<Link key={m.Make_Id} onClick={this.props.manufacturerDetails(m.Make_Id)}><li>{m.Make_Name}</li></Link>
+			  <h2>Click on a manufacturer to add to your contact list</h2>
+			   {this.props.manufacturers ? <ul>{this.props.manufacturers.map(m=>(<Link to={`/vehicle_manufacturers/${m.Make_ID}`} onClick={()=>this.props.addToContactList(m)}><li>{m.Make_Name}</li></Link>
 			   	))}</ul> : <p>Search is empty</p>
 			   }
 			    <p>----------------------------------------------------------------------------------</p>
@@ -94,7 +97,7 @@ if(this.props.vehicleMakers){
 
 			)}
 		else{
-			return(<p>No info</p>)
+			return(<h4>No info</h4>)
 		}
 	}
 } 
@@ -108,7 +111,7 @@ const mapStateToProps = state =>{
 const mapDispatchToProps = dispatch => ({
   
   findManufacturer: manu => dispatch({type: "FIND_MANUFACTURER",manu}),
-  manufacturerDetails: id => dispatch({type: "MANUFACTURER_DETAIL",id})
+  addToContactList: cManu => dispatch({type: "ADD_TO_CONTACT_LIST", cManu})
 })
 export default connect(mapStateToProps, mapDispatchToProps)(VehicleManufacturerContainer);
 

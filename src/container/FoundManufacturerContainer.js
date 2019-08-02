@@ -6,12 +6,10 @@ class FoundManufacturerContainer extends Component {
 
 
 	render(){
-		
-
-
-		// console.log("props",this.props)
+		 console.log("props",this.props)
        const{foundManufacturers} = this.props
        let foundIt;
+    
    if (foundManufacturers && foundManufacturers.length > 0){
    	let sortedM = this.props.foundManufacturers.sort(function(a,b){
 			
@@ -23,7 +21,7 @@ class FoundManufacturerContainer extends Component {
 
 
    	foundIt = 	<div>
-     <h2 class="cars-found'"><span id="car-header1">{foundManufacturers.length}</span> {foundManufacturers[0].Make_Name}c Model(s) Found!!!</h2>
+     <h2 class="cars-found'"><span id="car-header1">{foundManufacturers.length}</span> {foundManufacturers[0].Make_Name} Model(s) Found!!!</h2>
    	 <ol>
    	{sortedM.map((v,index) => (
    			<div key={v.id} >

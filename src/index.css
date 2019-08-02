@@ -35,6 +35,7 @@ code {
 	background-color: #ffffff90
 }
 table td{
+  width: 100%;
 border: 4px solid  #D5634A;
 background-color: #ffffff90
 }
@@ -191,10 +192,11 @@ body {
   color: red;
 }
 .main-screen table{
-  width: 100%;
+  width: cover;
 }
 .whole-screen table{
   width: 100%;
+  height: 100%;
 }
 .column-index{
 

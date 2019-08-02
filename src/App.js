@@ -1,15 +1,14 @@
 import React, {Component}from 'react';
 import {BrowserRouter as Router,Route, Link, Switch} from 'react-router-dom';
 import './App.css';
-import VehicleIndex from './container/VehicleIndex';
+
 
 import FoundManufacturerContainer from './container/FoundManufacturerContainer';
+import ContactListContainer from './container/ContactListContainer';
 
-import VehicleCreateForm from './components/VehicleCreateForm';
 
-import WishListContainer from './container/WishListContainer';
 
-import { fetchVehicles, vehicleManufacturers } from './action/Vehicles';
+import {vehicleManufacturers } from './action/Vehicles';
 import VehicleManufacturerContainer from './container/VehicleManufacturerContainer';
 import { connect } from 'react-redux';
 
@@ -59,8 +58,8 @@ import { connect } from 'react-redux';
         <Router>
           
            <Link to="/"><button>Home</button></Link>
-            <Link to="/vehicles"><button>List of Available Cars</button></Link>
-            <Link to="/vehicle_manufacturers" onClick={() => this.props.vehicleManufacturers()}><button>Get All Vehicle Manufacturers</button></Link>
+            
+            <Link to="/vehicle_manufacturers" onClick={() => this.props.vehicleManufacturers()}><button>Get List of All Manufacturers in U.S.A.</button></Link>
            <table>
 
             <table class ='main-screen'>
@@ -68,9 +67,10 @@ import { connect } from 'react-redux';
 
 
             <FoundManufacturerContainer  /> 
+            <ContactListContainer />
             <VehicleManufacturerContainer />
             
-            <WishListContainer />
+           
             
             
             
@@ -81,10 +81,10 @@ import { connect } from 'react-redux';
             
             <Switch>
              
-             <Route path="/vehicles" render={() => (<VehicleIndex />)}/> 
+             
              
              <Route path="/vehicles/foundVehicles" render={() => (<FoundManufacturerContainer  />)} />
-             <Route path="/vehicles/wished" render={() => (<WishListContainer />) } />
+             
              <Route path="/vehicle_manufacturers" render={() => (<VehicleManufacturerContainer />)}/> 
            </Switch>
 
@@ -101,4 +101,4 @@ import { connect } from 'react-redux';
 
 
 
-export default connect(null,{fetchVehicles, vehicleManufacturers})(App)
+export default connect(null,{vehicleManufacturers})(App)

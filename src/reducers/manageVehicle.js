@@ -2,7 +2,7 @@ import cuid from 'cuid';
 export const cuidFn = cuid;
 
 export default function manageVehicle(state = {
-  vehicles:[], foundManufacturers: [],  theDetailCar: [], wishCarHolder: [], loading: false,manufacturers:[]
+   foundManufacturers: [],   contactList: [], loading: false,manufacturers:[]
 }, action) {
 
 // console.log('all vehicles=',state.vehicles)
@@ -23,8 +23,9 @@ export default function manageVehicle(state = {
        return {vehicles: action.vehicles};
 
 
-       case 'FETCH_YEARS_MAKES':
-       return "the cars and years"
+       case 'FOUND_MANUFACTURERS':
+     
+       return {foundManufacturers: action.foundManufacturers.Results}
 
        
       case 'FIND_VEHICLES':
@@ -70,11 +71,14 @@ export default function manageVehicle(state = {
       const manufacturer = state.vehicleManufacturers.filter(m => (" "+m.Make_Name.toLowerCase()+" ").includes(" "+action.manu.toLowerCase()+" "))
       return {...state,manufacturers: manufacturer};
 
-      case 'FOUND_MANUFACTURERS':
       
-      return{foundManufacturers: action.foundManufacturers.Results}
-   
+      case 'ADD_TO_CONTACT_LIST':
 
+  if(!state.contactList){
+    return{...state,contactList: [action.cManu]}
+}else{
+  return{...state,contactList: [...state.contactList, action.cManu]}
+}
 
    
      
