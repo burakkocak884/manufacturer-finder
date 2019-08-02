@@ -54,7 +54,7 @@ if(this.props.vehicleMakers){
 		return (
 
 			<div>
-<h2>Looking for a specific Vehicle Manufacturer???</h2>
+<h2>Looking for a specific Manufacturer???</h2>
 		<Form >
 				<Form.Field>
 					

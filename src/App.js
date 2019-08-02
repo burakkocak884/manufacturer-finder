@@ -2,8 +2,8 @@ import React, {Component}from 'react';
 import {BrowserRouter as Router,Route, Link, Switch} from 'react-router-dom';
 import './App.css';
 import VehicleIndex from './container/VehicleIndex';
-import VehicleShow from './components/VehicleShow';
-import FoundVehicleContainer from './container/FoundVehicleContainer';
+
+import FoundManufacturerContainer from './container/FoundManufacturerContainer';
 
 import VehicleCreateForm from './components/VehicleCreateForm';
 
@@ -33,17 +33,17 @@ import { connect } from 'react-redux';
 
 
       
-      componentDidMount(){
-        console.log('a')
-        this.props.fetchVehicles()
-        // this.props.vehicleManufacturers()
-      //    this.interval = setInterval(() =>{
+      // componentDidMount(){
+      //   console.log('a')
       //   this.props.fetchVehicles()
-      // },250)
-      console.log('b')
-      //
+      //   // this.props.vehicleManufacturers()
+      // //    this.interval = setInterval(() =>{
+      // //   this.props.fetchVehicles()
+      // // },250)
+      // console.log('b')
+      // //
       
-      }
+      // }
 
 
            
@@ -67,13 +67,13 @@ import { connect } from 'react-redux';
             <td>
 
 
-            <FoundVehicleContainer  /> 
+            <FoundManufacturerContainer  /> 
             <VehicleManufacturerContainer />
             
             <WishListContainer />
-            <VehicleCreateForm />
             
-            <VehicleShow />
+            
+            
 
 
             </td>
@@ -82,8 +82,8 @@ import { connect } from 'react-redux';
             <Switch>
              
              <Route path="/vehicles" render={() => (<VehicleIndex />)}/> 
-             <Route path="/vehicles/:id" render={() => (<VehicleShow />)}/> 
-             <Route path="/vehicles/foundVehicles" render={() => (<FoundVehicleContainer  />)} />
+             
+             <Route path="/vehicles/foundVehicles" render={() => (<FoundManufacturerContainer  />)} />
              <Route path="/vehicles/wished" render={() => (<WishListContainer />) } />
              <Route path="/vehicle_manufacturers" render={() => (<VehicleManufacturerContainer />)}/> 
            </Switch>

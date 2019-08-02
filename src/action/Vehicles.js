@@ -37,6 +37,19 @@ export const createVehicle = (vehicle) =>{
           .catch(error => console.error(error))
     }
 }
+export const findVehicles = searchVehicle => {
+console.log("manu to search",searchVehicle)
+  return (dispatch) => {
+    dispatch({ type: 'START_GETTING_VEHICLES_MODELS' });
+    return fetch(`https://vpic.nhtsa.dot.gov/api/vehicles/getmodelsformakeyear/make/${searchVehicle.make}/modelyear/${searchVehicle.year}?format=json`)
+      .then(response => response.json())
+      .then(foundManufacturers =>  {
+        console.log('vehicle makers=',foundManufacturers)
+        dispatch({ type: 'FOUND_MANUFACTURERS', foundManufacturers})
+       
+      });
+}
+}
 
 
 export const vehicleList = make => {

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { connect} from 'react-redux';
 import {Form, Button} from 'semantic-ui-react';
+import {findVehicles} from '../action/Vehicles'
 class VehicleSearchForm extends Component{
 	constructor(props){
 super(props)
@@ -23,7 +24,7 @@ this.setState({
 		handleSubmit = event =>{
 			
 			event.preventDefault()
-			this.state.year = parseInt(this.state.year)
+			// this.state.year = parseInt(this.state.year)
 		
 			this.props.findVehicles(this.state)
 			this.setState({
@@ -60,14 +61,16 @@ this.setState({
 				</Form.Field>
 
 				<Form.Field>
-					<label>Make</label>
+					<label>Manufacturer Name</label>
 					<input   type="text" onChange={this.handleChange} name='make' placeholder="Make"/>
 				</Form.Field>
 
 	             <Form.Field>
-					<Button type="submit" onClick={this.handleSubmit}>Find List of Specific   <i class="fas fa-car"></i>(s)</Button>
+					<Button type="submit" onClick={this.handleSubmit}>Search </Button>
 				 </Form.Field>
 			</Form>
+
+
 			
 
 
@@ -81,11 +84,12 @@ this.setState({
 }
 }
 
-const mapDispatchToProps = dispatch => ({
+
+// const mapDispatchToProps = dispatch => ({
   
-  findVehicles: searchVehicle => dispatch({type: "FIND_VEHICLES",searchVehicle})
-})
-export default connect(null,mapDispatchToProps)(VehicleSearchForm);
+//   findVehicles: searchVehicle => dispatch({type: "FIND_VEHICLES",searchVehicle})
+// })
+export default connect(null,{findVehicles})(VehicleSearchForm);
 
 
 
