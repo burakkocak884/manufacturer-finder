@@ -88,28 +88,28 @@ export const deleteVehicle = vehicleId => {
     }
 }
 
-export function vehicleManufacturers(){
+// export function vehicleManufacturers(){
   
-   return (dispatch) => {
-    dispatch({ type: 'START_GETTING_MANUFACTURERS' });
-    return fetch('https://vpic.nhtsa.dot.gov/api/vehicles/getallmakes?format=json')
-      .then(response => response.json())
-      .then(vehicleManufacturers =>  {
-        console.log('vehicle makers=',vehicleManufacturers)
-        dispatch({ type: 'FETCH_MANUFACTURERS', vehicleManufacturers})
-      });
+//    return (dispatch) => {
+//     dispatch({ type: 'START_GETTING_MANUFACTURERS' });
+//     return fetch('https://vpic.nhtsa.dot.gov/api/vehicles/getallmakes?format=json')
+//       .then(response => response.json())
+//       .then(vehicleManufacturers =>  {
+//         console.log('vehicle makers=',vehicleManufacturers)
+//         dispatch({ type: 'FETCH_MANUFACTURERS', vehicleManufacturers})
+//       });
     
-}
+// }
 
 
-}
-export const findManufacturer = manu => {
+// }
+// export const findManufacturer = manu => {
 
-  return{
-    type: 'FIND_MANUFACTURER',
-    manu
-  }
-}
+//   return{
+//     type: 'FIND_MANUFACTURER',
+//     manu
+//   }
+// }
 
 
 

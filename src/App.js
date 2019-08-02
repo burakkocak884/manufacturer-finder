@@ -9,7 +9,7 @@ import VehicleCreateForm from './components/VehicleCreateForm';
 
 import WishListContainer from './container/WishListContainer';
 
-import { fetchVehicles, vehicleManufacturers } from './action/Vehicles';
+import { fetchVehicles } from './action/Vehicles';
 import VehicleManufacturerContainer from './container/VehicleManufacturerContainer';
 import { connect } from 'react-redux';
 
@@ -60,7 +60,7 @@ import { connect } from 'react-redux';
           
            <Link to="/"><button>Home</button></Link>
             <Link to="/vehicles"><button>List of Available Cars</button></Link>
-            <Link to="/vehicle_manufacturers" onClick={() => this.props.vehicleManufacturers()}><button>Get All Vehicle Manufacturers</button></Link>
+            
            <table>
 
             <table class ='main-screen'>
@@ -68,7 +68,7 @@ import { connect } from 'react-redux';
 
 
             <FoundVehicleContainer  /> 
-            <VehicleManufacturerContainer />
+            
             
             <WishListContainer />
             <VehicleCreateForm />
@@ -85,7 +85,7 @@ import { connect } from 'react-redux';
              <Route path="/vehicles/:id" render={() => (<VehicleShow />)}/> 
              <Route path="/vehicles/foundVehicles" render={() => (<FoundVehicleContainer  />)} />
              <Route path="/vehicles/wished" render={() => (<WishListContainer />) } />
-             <Route path="/vehicle_manufacturers" render={() => (<VehicleManufacturerContainer />)}/> 
+          
            </Switch>
 
        </table>
@@ -101,4 +101,4 @@ import { connect } from 'react-redux';
 
 
 
-export default connect(null,{fetchVehicles, vehicleManufacturers})(App)
+export default connect(null,{fetchVehicles})(App)
