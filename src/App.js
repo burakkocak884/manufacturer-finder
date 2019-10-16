@@ -60,6 +60,7 @@ import { connect } from 'react-redux';
            <Link to="/"><button>Home</button></Link>
             
             <Link to="/vehicle_manufacturers" onClick={() => this.props.vehicleManufacturers()}><button>Get List of All Manufacturers in U.S.A.</button></Link>
+            <p>Data provided by NHTSA</p>
            <table>
 
             <table class ='main-screen'>

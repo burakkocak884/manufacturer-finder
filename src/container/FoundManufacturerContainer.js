@@ -17,7 +17,7 @@ class FoundManufacturerContainer extends Component {
 			})
 
 		foundIt = 	<div>
-     					<h2 class="cars-found'"><span id="car-header1">{foundManufacturers.length}</span> {foundManufacturers[0].Make_Name} Model(s) Found!!!</h2>
+     					<h2 class="cars-found'">{foundManufacturers.length} result(s) found!!!</h2>
 						   	 <ol>
 						   	{sortedM.map((v,index) => (
 						   			<div key={v.id} >
