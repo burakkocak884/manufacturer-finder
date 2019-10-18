@@ -22,7 +22,7 @@ this.setState({
 		}
 
 		handleSubmit = event =>{
-			// console.log(this.state)
+		
 			
 			event.preventDefault()
 			// this.state.year = parseInt(this.state.year)
