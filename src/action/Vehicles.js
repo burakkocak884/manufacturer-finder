@@ -33,7 +33,6 @@ export function vehicleManufacturers(){
     return fetch('https://vpic.nhtsa.dot.gov/api/vehicles/getallmakes?format=json')
       .then(response => response.json())
       .then(vehicleManufacturers =>  {
-        console.log('vehicle makers=',vehicleManufacturers)
         dispatch({ type: 'FETCH_MANUFACTURERS', vehicleManufacturers})
       });
     

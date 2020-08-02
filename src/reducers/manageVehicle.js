@@ -9,26 +9,10 @@ export default function manageVehicle(state = {
 
   switch (action.type) {
 
-
-     
-      
-
-
-      
-
        case 'FOUND_MANUFACTURERS':
-     
        return {foundManufacturers: action.foundManufacturers.Results}
-
        
-      
-    
-
-
-
-
       case 'DELETE_FROM_CONTACT':
-      debugger
       const newContactList = state.contactList.filter(c => c.Make_ID !== action.conId)
       return {contactList: newContactList}
 

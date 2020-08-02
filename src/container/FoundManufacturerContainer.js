@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Link}  from 'react-router-dom';
 import { connect} from 'react-redux';
-import VehicleSearchForm from '../components/VehicleSearchForm';
+import VehicleSearchForm from '../components/ManifacturerSearchForm';
 class FoundManufacturerContainer extends Component {
 
 
@@ -35,8 +35,10 @@ class FoundManufacturerContainer extends Component {
 
 			return(
 			<div>
-			
-				<h1>Manufacturer's Product Finder</h1>
+			<div className="main-table-header">
+				<h1>Manufacturer's Product Finder <span className="data-source-text">(Data provided by NHTSA)</span></h1>
+				
+				</div>
 				 	<VehicleSearchForm />
 				{foundIt}
 			</div>
