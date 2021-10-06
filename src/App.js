@@ -6,12 +6,14 @@ import ContactListContainer from './container/ContactListContainer';
 import {vehicleManufacturers } from './action/Vehicles';
 import VehicleManufacturerContainer from './container/VehicleManufacturerContainer';
 import { connect } from 'react-redux';
-import {Form, Button} from 'semantic-ui-react';
+import {Form, Button, Label} from 'semantic-ui-react';
 
 
     class App extends Component{
-      
+        
       render(){
+        let currentDate = new Date();
+        let currentYear = currentDate.getFullYear();
           return (
               <div class="main-display'">
         
@@ -30,6 +32,7 @@ import {Form, Button} from 'semantic-ui-react';
                         <Button className="nav-button">Get List of All Manufacturers in U.S.A.</Button>
                     </Form.Field>
                 </Link>
+                
                 </div>
                 
                 </div>
@@ -50,6 +53,9 @@ import {Form, Button} from 'semantic-ui-react';
                 </table>
        
                 </Router>
+                <div className="copy-right-label">
+                    <Label className="nav-label">&copy; {currentYear} <strong>Burak Kocak</strong></Label>
+                </div>
               </div>
             );}
 }
