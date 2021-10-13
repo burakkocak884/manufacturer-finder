@@ -19,17 +19,8 @@ class VehicleSearchForm extends Component{
 
 				handleSubmit = event =>{
 					event.preventDefault()
-					this.props.findVehicles(this.state)
-					this.setState({
-						year: 0,
-						make:''
-						})
+					this.props.findVehicles(this.state);
 					}
-	
-
-
-
-
 		
 
 	render(){
@@ -37,12 +28,12 @@ class VehicleSearchForm extends Component{
 				 <Form >
 					<Form.Field>
 						<label>Year</label>
-						<input   type="number" onChange={this.handleChange} name='year' placeholder="1900-2020"/>
+						<input   type="number" onChange={this.handleChange} name='year' placeholder="1900-2020" />
 					</Form.Field>
 
 					<Form.Field>
 						<label>Manufacturer Name</label>
-						<input   type="text" onChange={this.handleChange} name='make' placeholder="Make"/>
+						<input   type="text" onChange={this.handleChange} name='make' placeholder="Make" />
 					</Form.Field>
 
 					<Form.Field>

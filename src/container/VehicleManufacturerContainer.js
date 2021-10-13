@@ -1,7 +1,7 @@
 import React,{Component}from 'react';
 import {connect} from 'react-redux';
 import {Form, Button} from 'semantic-ui-react';
-import {findManufacturer, addToContactList} from '../action/Vehicles'
+//import {findManufacturer, addToContactList} from '../action/Vehicles'
 import  {Link} from 'react-router-dom';
 class VehicleManufacturerContainer extends Component {
 	

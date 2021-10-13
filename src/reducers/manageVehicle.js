@@ -2,7 +2,7 @@ import cuid from 'cuid';
 export const cuidFn = cuid;
 
 export default function manageVehicle(state = {
-   foundManufacturers: [],   contactList: [], loading: false,manufacturers:[]
+   foundManufacturers: [],   contactList: [], loading: false,manufacturers:[], searchCriteria:{}
 }, action) {
 
 // console.log('all vehicles=',state.vehicles)
@@ -10,7 +10,7 @@ export default function manageVehicle(state = {
   switch (action.type) {
 
        case 'FOUND_MANUFACTURERS':
-       return {foundManufacturers: action.foundManufacturers.Results}
+       return {foundManufacturers: action.foundManufacturers.Results, searchCriteria: action.searchVehicle}
        
       case 'DELETE_FROM_CONTACT':
       const newContactList = state.contactList.filter(c => c.Make_ID !== action.conId)
@@ -39,14 +39,16 @@ export default function manageVehicle(state = {
 
       
       case 'ADD_TO_CONTACT_LIST':
-
-  if(!state.contactList){
-    return{...state,contactList: [action.cManu]}
-}else{
-  const existManu = state.contactList.find(e => e.Make_ID === action.cManu.Make_ID)
-  if(!existManu){
-  return{...state,contactList: [...state.contactList, action.cManu]}
-}
+      if(!state.contactList)
+      {
+        return{...state,contactList: [action.cManu]}
+      }
+      else
+      {
+        let existManu = state.contactList.find(e => e.Make_ID === action.cManu.Make_ID)
+        if(!existManu){
+        return{...state,contactList: [...state.contactList, action.cManu]}
+      }
 
 }
 

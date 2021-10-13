@@ -1,28 +1,33 @@
 import React, {Component} from 'react';
-import {Link}  from 'react-router-dom';
+//import {Link}  from 'react-router-dom';
 import { connect} from 'react-redux';
 import VehicleSearchForm from '../components/ManifacturerSearchForm';
 class FoundManufacturerContainer extends Component {
 
 
 	render(){
-		 console.log("props",this.props)
-       const{foundManufacturers} = this.props
-       let foundIt;
+		 //console.log("props",this.props)
+       const{foundManufacturers, searchCriteria} = this.props
+	   let foundIt;
+	   let maker;
+	   let year;
 
   		 if (foundManufacturers && foundManufacturers.length > 0){
    		let sortedM = this.props.foundManufacturers.sort(function(a,b){
 			
 			return a.Model_Name < b.Model_Name ? -1 : a.Model_Name >b.Model_Name ? 1 : 0;
 			})
+		maker = foundManufacturers[0].Make_Name;
+		year = searchCriteria.year;
+		//year = foundManufacturers[0].year;
 
 		foundIt = 	<div>
-     					<h2 class="cars-found'">{foundManufacturers.length} result(s) found!!!</h2>
+     					<h2 class="cars-found'">We found <span className='result-length'>{foundManufacturers.length}</span> products Manufactured or Sold by <span className='result-length'>{maker}</span> in <span className='result-length'>{year}</span> in the U.S.</h2>
 						   	 <ol>
 						   	{sortedM.map((v,index) => (
 						   			<div key={v.id} >
 						   			
-							   			<li>{v.Model_Name}</li>
+							   			<li id={index}>{v.Model_Name}</li>
 											
 									</div>
 											))}
@@ -48,7 +53,10 @@ class FoundManufacturerContainer extends Component {
 
 
 const mapStateToProps = state =>{
-	return{foundManufacturers: state.foundManufacturers}
+	return{
+		foundManufacturers: state.foundManufacturers,
+		searchCriteria: state.searchCriteria
+	}
 }
 	const mapDispatchToProps = dispatch => ({
 
