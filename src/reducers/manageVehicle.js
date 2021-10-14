@@ -34,7 +34,7 @@ export default function manageVehicle(state = {
 
 
       case 'FIND_MANUFACTURER':
-      const manufacturer = state.vehicleManufacturers.filter(m => (" "+m.Make_Name.toLowerCase()+" ").includes(" "+action.manu.toLowerCase()+" "))
+      const manufacturer = state.vehicleManufacturers.filter(m => (""+m.Make_Name.toLowerCase()+"").includes(""+action.manu.toLowerCase().trim()+""))
       return {...state,manufacturers: manufacturer};
 
       
