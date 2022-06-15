@@ -39,7 +39,10 @@ background-color: #ffffff90
 }
 
 /* Remove extra left and right margins, due to padding */
-.row {margin: 0 20px;}
+.row {
+  margin: 10px 20px;
+  
+}
 
 /* Clear floats after the columns */
 .row:after {
@@ -54,13 +57,17 @@ background-color: #ffffff90
     width: 100%;
     display: block;
     margin-bottom: 20px;
+    
   }
 }
 .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   padding: 10px;
   text-align: center;
-  background-color: #f1f1f1;
+  background-color: rgb(195, 225, 241);
+  margin: 10px;
+  
+  
 }
 .main-body{
 	background-size: 200% ; 
@@ -133,3 +140,19 @@ body {
 .result-length{
 color: green;
 }
+
+/* .cars-found-grouping{
+  display: flex;
+  
+} */
+
+.found-model-card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  margin: 10px;
+  text-align: center;
+  background-color: beige;
+  width: 300px;
+  
+}
+
