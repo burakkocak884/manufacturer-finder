@@ -13,18 +13,17 @@ class ContactListContainer extends Component {
 
 			if(sortedContact != null && sortedContact.length > 0){
 				return(
-					<div>
-							<h1>Click on a record for brief details</h1>
-							<div className = 'row'>
-							  {sortedContact.map(c =>(
-								<div className = 'column'><div className = 'card'><h5>{c.Make_Name}...</h5><button onClick={()=> this.props.deleteContact(c.Make_ID)}>X</button></div></div>
-									))}
-						  
-							  </div>
-					</div>
+						<div>
+								<h1>Click on a record for brief details</h1>
+								<div className = 'row'>
+								{sortedContact.map(c =>(
+									<div className = 'column'><div className = 'card'><h5>{c.Make_Name}...</h5><button onClick={()=> this.props.deleteContact(c.Make_ID)}>X</button></div></div>
+										))}
+							
+								</div>
+						</div>
 						)
 			}
-				
 			}else{
 					return(<div><p></p></div>)
 	}

@@ -11,7 +11,6 @@ class FoundManufacturerContainer extends Component {
 	   let foundIt = <p>Type a year and name of a manufacturer  in the form to list if any products offered.</p>
 	   let sortedCarMakers;
 	   let sortedManufacturers;
-	   
 
   		 if (foundCarMakers && foundCarMakers.length > 0){
    			sortedCarMakers = foundCarMakers.sort(function(a,b){

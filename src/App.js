@@ -32,12 +32,6 @@ import {Form, Button, Label} from 'semantic-ui-react';
                         <Button className="nav-button">Get List of All Manufacturers in U.S.A.</Button>
                     </Form.Field>
                 </Link>
-
-                {/* <Link to="" onClick={() => this.props.getManufacturerDetails()}>
-                    <Form.Field>
-                        <Button className="nav-button">Manufacturer Directory</Button>
-                    </Form.Field>
-                </Link> */}
                 
                 </div>
                 
@@ -54,7 +48,6 @@ import {Form, Button, Label} from 'semantic-ui-react';
 
                     <Switch>
                     <Route path="/vehicles/foundVehicles" render={() => (<FoundManufacturerContainer  />)} />
-                    {/* <Route path="/vehicle_manufacturers" render={() => (<VehicleManufacturerContainer />)}/>  */}
                     </Switch>
                 </table>
        
