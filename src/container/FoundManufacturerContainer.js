@@ -3,7 +3,10 @@ import {Link}  from 'react-router-dom';
 import { connect} from 'react-redux';
 import VehicleSearchForm from '../components/ManifacturerSearchForm';
 class FoundManufacturerContainer extends Component {
-
+	
+		handleSelected = event => {
+			// to do
+		}
 
 	render(){
 		 
@@ -30,10 +33,12 @@ class FoundManufacturerContainer extends Component {
 			sortedManufacturers = foundManufacturers.sort(function(a,b){
 			return a.Mfr_Name < b.Mfr_Name ? -1 : a.Mfr_Name >b.Mfr_Name ? 1 : 0;
 			})
+
+			debugger;
 			foundIt =	<div>
 							<div className = 'found-model-container'>
 								<ul>
-									{sortedManufacturers.map((v,index) => (<div key={v.id} ><li id={index}>{v.Mfr_Name}</li></div>))}
+									{sortedManufacturers.map((v,index) => (<div key={v.id} ><li id={index}><Link onClick = {() => this.handleSelected(v) }>{v.Mfr_Name}</Link></li></div>))}
 								</ul>
 							</div>				
 						</div>
