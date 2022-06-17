@@ -57,7 +57,7 @@ export const findManufacturer = manufacturerName => {
 }
 
 export const addToContactList = manufacturerName => {
-  debugger;
+  
 if(manufacturerName != null){
   return (dispatch) => {
     return fetch(`https://vpic.nhtsa.dot.gov/api/vehicles/GetManufacturerDetails/${manufacturerName}?format=xml?format=json`)
