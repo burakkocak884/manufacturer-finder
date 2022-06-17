@@ -1,7 +1,7 @@
 import React,{Component}from 'react';
 import {connect} from 'react-redux';
 import {Form, Button} from 'semantic-ui-react';
-//import {findManufacturer, addToContactList} from '../action/Vehicles'
+import {getManufacturerDetails, findManufacturer, addToContactList} from '../action/Vehicles'
 import  {Link} from 'react-router-dom';
 class VehicleManufacturerContainer extends Component {
 	
@@ -12,40 +12,42 @@ class VehicleManufacturerContainer extends Component {
 					searchTerm:''
 		}}
 
+//const findManufacturer = () => ({type: "FIND_MANUFACTURER",manu});
+//const addToContactList = () => ({type: "ADD_TO_CONTACT_LIST", cManu});
+//const getManufacturerDetails = () => ({type: "GET_MANUFACTURER_DETAIL", manufacturerId});
 
 				handleChange = event =>{
-					this.setState({searchTerm: event.target.value})
+					if(event.target.value !== '')
+						this.setState({searchTerm: event.target.value})
 				}
 		
 
 
 				handleSubmit = (event) =>{
 					event.preventDefault()
-					console.log(this.state)
-					
+					if(this.state.searchTerm !== ''){
 						this.props.findManufacturer(this.state.searchTerm)
 						this.setState({searchTerm:''})
-			    }
+					}
+						
+				}
+				
+				handleSelected = (event) =>{
+					this.props.addToContactList(event);
+					//this.props.getManufacturerDetails(event.Make_ID);
+
+				}
 
 		render(){
-		// console.log("rawData=",this.props)
-		// console.log("manu=",this.props.manufacturers)
+		
 		
 
-		if(this.props.vehicleMakers){
-
-			let sortedInfo = this.props.vehicleMakers.sort(function(a,b){
-				
-				return a.Make_Name < b.Make_Name ? -1 : a.Make_Name >b.Make_Name ? 1 : 0;
-			})
-		// console.log('sortedData',sortedInfo)
-
-
-
+		
+		
 		return (
 
 			<div>
-				<h2>Looking for a specific Manufacturer???</h2>
+				{/* <h2>Search in Directory</h2> */}
 					<Form >
 							<Form.Field>
 								
@@ -60,44 +62,36 @@ class VehicleManufacturerContainer extends Component {
 			  		 </Form>
 
 
-				    <p>----------------------------------------------------------------------------------</p>
+				    {/* <p>----------------------------------------------------------------------------------</p> */}
 					  
-					  <div class="selected-manus"> 
+					  {/* <div className="selected-manus"> 
 					  <h2>Click on a manufacturer to add to your contact list</h2> 
-					  {this.props.manufacturers ? <ul>{this.props.manufacturers.map(m=>(<Link to={`/vehicle_manufacturers/${m.Make_ID}`} onClick={()=>this.props.addToContactList(m)}><li>{m.Make_Name}</li></Link>
+					  {this.props.manufacturers ? <ul>{this.props.manufacturers.map((m, index)=>(<Link key={index} to={`/vehicle_manufacturers/${m.Make_ID}`} onClick={()=>this.handleSelected(m)}><li key={index}>{m.Make_Name}</li></Link>
 					   	))}</ul> : <p>Search is empty</p>
-					   }</div>
-				    <p>----------------------------------------------------------------------------------</p>
-			   
-			
-
+					   }</div> */}
+				    {/* <p>----------------------------------------------------------------------------------</p> */}
+			  
 
 						<ul>
-							{sortedInfo.map(v =>(
-								<li>{v.Make_Name}</li>
-
-								))}
+							{this.props.vehicleMakers ? this.props.vehicleMakers.map((v, index) =>(<li key={index} >{v.Make_Name}</li>)):<h4></h4>}
 					   </ul>
-			 </div>
+			</div>
 				)}
-		else{
-			return(<h4></h4>)
-		}
-	}
+		
+	
 } 
 const mapStateToProps = state =>{
+	console.log("details found : ",state.foundManufacturer)
 	return{
+		
 		vehicleMakers: state.vehicleManufacturers,
-		manufacturers: state.manufacturers
+		manufacturers: state.manufacturers,
+		manufacturer: state.foundManufacturer
 
 	}
 }
-const mapDispatchToProps = dispatch => ({
-  
-  findManufacturer: manu => dispatch({type: "FIND_MANUFACTURER",manu}),
-  addToContactList: cManu => dispatch({type: "ADD_TO_CONTACT_LIST", cManu})
-})
-export default connect(mapStateToProps, mapDispatchToProps)(VehicleManufacturerContainer);
+
+export default connect(mapStateToProps, {getManufacturerDetails, addToContactList, findManufacturer})(VehicleManufacturerContainer);
 
 
 

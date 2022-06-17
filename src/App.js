@@ -3,7 +3,7 @@ import {BrowserRouter as Router,Route, Link, Switch} from 'react-router-dom';
 import './App.css';
 import FoundManufacturerContainer from './container/FoundManufacturerContainer';
 import ContactListContainer from './container/ContactListContainer';
-import {vehicleManufacturers } from './action/Vehicles';
+import {vehicleManufacturers, getManufacturerDetails } from './action/Vehicles';
 import VehicleManufacturerContainer from './container/VehicleManufacturerContainer';
 import { connect } from 'react-redux';
 import {Form, Button, Label} from 'semantic-ui-react';
@@ -15,7 +15,7 @@ import {Form, Button, Label} from 'semantic-ui-react';
         let currentDate = new Date();
         let currentYear = currentDate.getFullYear();
           return (
-              <div class="main-display'">
+              <div className="main-display'">
         
 
         <Router>
@@ -32,6 +32,12 @@ import {Form, Button, Label} from 'semantic-ui-react';
                         <Button className="nav-button">Get List of All Manufacturers in U.S.A.</Button>
                     </Form.Field>
                 </Link>
+
+                {/* <Link to="" onClick={() => this.props.getManufacturerDetails()}>
+                    <Form.Field>
+                        <Button className="nav-button">Manufacturer Directory</Button>
+                    </Form.Field>
+                </Link> */}
                 
                 </div>
                 
@@ -48,7 +54,7 @@ import {Form, Button, Label} from 'semantic-ui-react';
 
                     <Switch>
                     <Route path="/vehicles/foundVehicles" render={() => (<FoundManufacturerContainer  />)} />
-                    <Route path="/vehicle_manufacturers" render={() => (<VehicleManufacturerContainer />)}/> 
+                    {/* <Route path="/vehicle_manufacturers" render={() => (<VehicleManufacturerContainer />)}/>  */}
                     </Switch>
                 </table>
        
@@ -62,4 +68,4 @@ import {Form, Button, Label} from 'semantic-ui-react';
 
 
 
-export default connect(null,{vehicleManufacturers})(App)
+export default connect(null,{vehicleManufacturers, getManufacturerDetails})(App)

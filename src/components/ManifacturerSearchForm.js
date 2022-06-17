@@ -14,12 +14,14 @@ class VehicleSearchForm extends Component{
 
 		
 				handleChange = event =>{
-					this.setState({[event.target.name]: event.target.value})
+					if(event.target.value !== '')
+						this.setState({[event.target.name]: event.target.value})
 					}
 
 				handleSubmit = event =>{
 					event.preventDefault()
-					this.props.findVehicles(this.state);
+					if(this.state.make !== '')
+						this.props.findVehicles(this.state);
 					}
 		
 

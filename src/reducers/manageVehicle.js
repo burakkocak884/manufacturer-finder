@@ -1,60 +1,57 @@
 import cuid from 'cuid';
+import { isDebuggerStatement } from '@babel/types';
+//import { isDebuggerStatement } from 'typescript';
 export const cuidFn = cuid;
 
 export default function manageVehicle(state = {
-   foundManufacturers: [],   contactList: [], loading: false,manufacturers:[], searchCriteria:{}
+   foundManufacturers: [],foundCarMakers: [],  contactList: [], loading: false,manufacturers:[], searchCriteria:{}, foundManufacturer: {}
 }, action) {
 
 // console.log('all vehicles=',state.vehicles)
 
   switch (action.type) {
 
-       case 'FOUND_MANUFACTURERS':
-       return {foundManufacturers: action.foundManufacturers.Results, searchCriteria: action.searchVehicle}
-       
+      case 'FOUND_MANUFACTURERS':
+        return {foundManufacturers: action.foundManufacturers.Results }
+
+      case 'FOUND_CAR_MAKERS':
+        return {foundCarMakers: action.foundManufacturers.Results }
+      
       case 'DELETE_FROM_CONTACT':
-      const newContactList = state.contactList.filter(c => c.Make_ID !== action.conId)
-      return {contactList: newContactList}
+        const newContactList = state.contactList.filter(c => c.Make_ID !== action.conId)
+        return {contactList: newContactList}
 
-       case 'CREATE_VEHICLE':
-      // console.log("brand new car", action.vehicle)
-      const theNewCar = action.vehicle
-       if(!state.vehicles){
-         return{...state, vehicles: state.vehicles.concat(theNewCar)}
-       }
+      case 'CREATE_VEHICLE':
+        const theNewCar = action.vehicle
+        if(!state.vehicles){
+          return{...state, vehicles: state.vehicles.concat(theNewCar)}
+        }
+        break;
 
-
-       case "DELETE_VEHICLE":
-       const newList = state.vehicles.filter(v => v.id !== action.vehicleId)
-       return newList;
+      case "DELETE_VEHICLE":
+        const newList = state.vehicles.filter(v => v.id !== action.vehicleId)
+        return newList;
 
       case'FETCH_MANUFACTURERS':
-      return{vehicleManufacturers: action.vehicleManufacturers.Results}
-   
-
+        return{vehicleManufacturers: action.vehicleManufacturers.Results}
 
       case 'FIND_MANUFACTURER':
-      const manufacturer = state.vehicleManufacturers.filter(m => (""+m.Make_Name.toLowerCase()+"").includes(""+action.manu.toLowerCase().trim()+""))
-      return {...state,manufacturers: manufacturer};
+        const manufacturer = state.vehicleManufacturers.filter(m => (""+m.Make_Name.toLowerCase()+"").includes(""+action.manu.toLowerCase().trim()+""))
+        return {...state,manufacturers: manufacturer};
 
-      
       case 'ADD_TO_CONTACT_LIST':
-      if(!state.contactList)
-      {
-        return{...state,contactList: [action.cManu]}
-      }
-      else
-      {
-        let existManu = state.contactList.find(e => e.Make_ID === action.cManu.Make_ID)
-        if(!existManu){
-        return{...state,contactList: [...state.contactList, action.cManu]}
-      }
-
-}
-
-   
-     
-
+        if(state.contactList != null && state.contactList.length > 0)
+        {
+          return{...state,contactList: [action.cManu]}
+        }
+        else
+        {
+          let existManu = state.vehicleManufacturers.find(e => e.Make_ID === action.manufacturerName.Make_ID)
+          if(!existManu){
+          return{...state,contactList: [...state.contactList, action.manufacturerName.Make_Name]}
+        }
+        break;
+    }
      default:
       return state;
 
