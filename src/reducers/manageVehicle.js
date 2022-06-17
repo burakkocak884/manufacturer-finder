@@ -1,13 +1,11 @@
 import cuid from 'cuid';
-import { isDebuggerStatement } from '@babel/types';
+//import { isDebuggerStatement } from '@babel/types';
 //import { isDebuggerStatement } from 'typescript';
 export const cuidFn = cuid;
 
 export default function manageVehicle(state = {
    foundManufacturers: [],foundCarMakers: [],  contactList: [], loading: false,manufacturers:[], searchCriteria:{}, foundManufacturer: {}
 }, action) {
-
-// console.log('all vehicles=',state.vehicles)
 
   switch (action.type) {
 
