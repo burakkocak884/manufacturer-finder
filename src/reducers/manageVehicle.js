@@ -4,13 +4,16 @@ import cuid from 'cuid';
 export const cuidFn = cuid;
 
 export default function manageVehicle(state = {
-   foundManufacturers: [],foundCarMakers: [],  contactList: [], loading: false,manufacturers:[], searchCriteria:{}, foundManufacturer: {}
+   foundManufacturers: [],foundCarMakers: [],  contactList: [], loading: false,manufacturers:[], searchCriteria:{}, foundManufacturer: {},
 }, action) {
 
   switch (action.type) {
 
       case 'FOUND_MANUFACTURERS':
         return {foundManufacturers: action.foundManufacturers.Results }
+
+      case 'GETTING_MANUFACTURERS':
+        return {promiseDisplay: action.str}
 
       case 'FOUND_CAR_MAKERS':
         return {foundCarMakers: action.foundManufacturers.Results }

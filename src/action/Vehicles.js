@@ -39,11 +39,12 @@ export function vehicleManufacturers(){
 
 }
 export const findManufacturer = manufacturerName => {
+  let str = 'Generating Data...';
   return (dispatch) => {
+    dispatch({ type: 'GETTING_MANUFACTURERS', str });
     return fetch(`https://vpic.nhtsa.dot.gov/api/vehicles/GetManufacturerDetails/${manufacturerName}?format=json`)
     .then(response => response.json())
     .then(foundManufacturers =>  {
-      console.log("Search result of Manufacturers : ",foundManufacturers);
       dispatch({ type: 'FOUND_MANUFACTURERS', foundManufacturers})
     });
     }

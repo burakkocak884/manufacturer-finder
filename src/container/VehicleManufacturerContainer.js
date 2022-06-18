@@ -2,7 +2,7 @@ import React,{Component}from 'react';
 import {connect} from 'react-redux';
 import {Form, Button} from 'semantic-ui-react';
 import {getManufacturerDetails, findManufacturer, addToContactList} from '../action/Vehicles'
-import  {Link} from 'react-router-dom';
+//import  {Link} from 'react-router-dom';
 class VehicleManufacturerContainer extends Component {
 	
 	constructor(props){
@@ -12,16 +12,10 @@ class VehicleManufacturerContainer extends Component {
 					searchTerm:''
 		}}
 
-//const findManufacturer = () => ({type: "FIND_MANUFACTURER",manu});
-//const addToContactList = () => ({type: "ADD_TO_CONTACT_LIST", cManu});
-//const getManufacturerDetails = () => ({type: "GET_MANUFACTURER_DETAIL", manufacturerId});
 
 				handleChange = event =>{
-					if(event.target.value !== '')
 						this.setState({searchTerm: event.target.value})
 				}
-		
-
 
 				handleSubmit = (event) =>{
 					event.preventDefault()
@@ -29,13 +23,14 @@ class VehicleManufacturerContainer extends Component {
 						this.props.findManufacturer(this.state.searchTerm)
 						this.setState({searchTerm:''})
 					}
-						
 				}
 				
 				handleSelected = (event) =>{
 					this.props.addToContactList(event);
-					//this.props.getManufacturerDetails(event.Make_ID);
+				}
 
+				isValid(str) {
+					return (!str || /^\s*$/.test(str));
 				}
 
 		render(){
@@ -48,16 +43,16 @@ class VehicleManufacturerContainer extends Component {
 
 			<div>
 				{/* <h2>Search in Directory</h2> */}
-					<Form >
-							<Form.Field>
+					<Form className = 'search-container'>
+							<Form.Field className = 'search-input'>
 								
-								<input   type="text" onChange={this.handleChange} value={this.state.searchTerm} placeholder="Type in a business name..."/>
+								<input  type="text" onChange={this.handleChange} value={this.state.searchTerm} placeholder="Type in a business name..."/>
 							</Form.Field>
 
 							
 							
 				             <Form.Field>
-								<Button type="submit" onClick={this.handleSubmit}>Find A Specific Manufacturer</Button>
+								<Button type="submit" onClick={this.handleSubmit}>Search in Directory</Button>
 							 </Form.Field>
 			  		 </Form>
 
@@ -81,13 +76,10 @@ class VehicleManufacturerContainer extends Component {
 	
 } 
 const mapStateToProps = state =>{
-	console.log("details found : ",state.foundManufacturer)
 	return{
-		
 		vehicleMakers: state.vehicleManufacturers,
 		manufacturers: state.manufacturers,
 		manufacturer: state.foundManufacturer
-
 	}
 }
 
