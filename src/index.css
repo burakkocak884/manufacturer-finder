@@ -189,6 +189,10 @@ color: green;
 .result-warning-message{
   color: #D5634A;
 }
+
+.info-message{
+  color: green;
+}
 .result-warning{
   padding-left: 30px;
 }

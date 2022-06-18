@@ -35,38 +35,19 @@ class VehicleManufacturerContainer extends Component {
 
 		render(){
 		
-		
-
-		
-		
 		return (
 
 			<div>
-				{/* <h2>Search in Directory</h2> */}
 					<Form className = 'search-container'>
 							<Form.Field className = 'search-input'>
-								
 								<input  type="text" onChange={this.handleChange} value={this.state.searchTerm} placeholder="Type in a business name..."/>
 							</Form.Field>
 
-							
-							
 				             <Form.Field>
 								<Button type="submit" onClick={this.handleSubmit}>Search in Directory</Button>
 							 </Form.Field>
 			  		 </Form>
-
-
-				    {/* <p>----------------------------------------------------------------------------------</p> */}
-					  
-					  {/* <div className="selected-manus"> 
-					  <h2>Click on a manufacturer to add to your contact list</h2> 
-					  {this.props.manufacturers ? <ul>{this.props.manufacturers.map((m, index)=>(<Link key={index} to={`/vehicle_manufacturers/${m.Make_ID}`} onClick={()=>this.handleSelected(m)}><li key={index}>{m.Make_Name}</li></Link>
-					   	))}</ul> : <p>Search is empty</p>
-					   }</div> */}
-				    {/* <p>----------------------------------------------------------------------------------</p> */}
-			  
-
+						{this.props.vehicleMakers && this.props.vehicleMakers.length > 0 ? <h2>Total of <span className = 'info-message'>{this.props.vehicleMakers.length}</span> records have been found...</h2> : <p></p>}
 						<ul>
 							{this.props.vehicleMakers ? this.props.vehicleMakers.map((v, index) =>(<li key={index} >{v.Make_Name}</li>)):<h4></h4>}
 					   </ul>
