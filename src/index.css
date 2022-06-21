@@ -236,33 +236,38 @@ color: green;
   display: block;
   float: left;
   position: absolute;
+  top: 445px;
+  left: 60px;
 }
  #gear2 {
   color: rgb(159, 161, 159);
   display: block;
   float: left;
   position: absolute;
+  left: 120px;
 }
  #gear3 {
   color: rgb(163, 168, 179);
   display: block;
   float: left;
   position: absolute;
-}
-          
-#gear1 {
-  top: 445px;
-  left: 60px;
-}
-          
-#gear2 {
-  left: 120px;
-}
-
-#gear3 {
   top: 445px;
   left: 180px;
 }
+
+#gear1-all{
+  color: rgb(122, 121, 121);
+}
+
+#gear2-all{
+  color: rgb(159, 161, 159);
+}
+
+#gear3-all{
+  color: rgb(163, 168, 179);
+}
+          
+
 #loading-message{
 
 padding-left: 240px;

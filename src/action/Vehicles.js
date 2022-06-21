@@ -27,6 +27,7 @@ export const deleteContact = conId => {
 }
 
 export function vehicleManufacturers(){
+  
    return (dispatch) => {
     dispatch({ type: 'START_GETTING_MANUFACTURERS' });
     return fetch('https://vpic.nhtsa.dot.gov/api/vehicles/getallmakes?format=json')

@@ -17,6 +17,10 @@ export default function manageVehicle(state = {
 
       case 'FOUND_CAR_MAKERS':
         return {foundCarMakers: action.foundManufacturers.Results }
+
+      case 'START_GETTING_MANUFACTURERS':
+        let collectingManufacturingMessage = 'Getting list of all the manufacturers';
+        return {messageToFectchManufacturers: collectingManufacturingMessage}
       
       case 'DELETE_FROM_CONTACT':
         const newContactList = state.contactList.filter(c => c.Make_ID !== action.conId)

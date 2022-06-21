@@ -36,7 +36,7 @@ const ManufacturerDetailCard = props =>{
                             <p>Address : {displayDetail.Address ? displayDetail.Address: 'N/A'}  {displayDetail.Address2 ? displayDetail.Address2 : ''}</p>
                             <p>{displayDetail.City ? displayDetail.City : ''} {displayDetail.StateProvince ? ', ' + displayDetail.StateProvince: ''}   {displayDetail.PostalCode ? displayDetail.PostalCode: ''} , {displayDetail.Country ? displayDetail.Country : ''}</p>
                             
-                            <Label className='manu-detail-card-header'>Vehicle Types(if any)</Label>
+                            <Label className='manu-detail-card-header'>Vehicle Type Information(if available)</Label>
                                 {displayDetail.VehicleTypes.map((t, index)=>(<div>
                                     <p>{t.Name} : {t.GVWRFrom}</p>
                                     <p>{t.Name} : {t.GVWRTo}</p>
