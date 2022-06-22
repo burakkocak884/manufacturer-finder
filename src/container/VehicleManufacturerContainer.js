@@ -1,7 +1,7 @@
 import React,{Component}from 'react';
 import {connect} from 'react-redux';
 import {Form, Button} from 'semantic-ui-react';
-import {getManufacturerDetails, findManufacturer, addToContactList} from '../action/Vehicles'
+import {findManufacturer, addToContactList} from '../action/Vehicles'
 class VehicleManufacturerContainer extends Component {
 	
 	constructor(props){
@@ -84,7 +84,7 @@ const mapStateToProps = state =>{
 	}
 }
 
-export default connect(mapStateToProps, {getManufacturerDetails, addToContactList, findManufacturer})(VehicleManufacturerContainer);
+export default connect(mapStateToProps, {addToContactList, findManufacturer})(VehicleManufacturerContainer);
 
 
 

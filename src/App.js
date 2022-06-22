@@ -3,7 +3,7 @@ import {BrowserRouter as Router,Route, Link, Switch} from 'react-router-dom';
 import './App.css';
 import FoundManufacturerContainer from './container/FoundManufacturerContainer';
 import ContactListContainer from './container/ContactListContainer';
-import {vehicleManufacturers, getManufacturerDetails } from './action/Vehicles';
+import {vehicleManufacturers } from './action/Vehicles';
 import VehicleManufacturerContainer from './container/VehicleManufacturerContainer';
 import { connect } from 'react-redux';
 import {Form, Button, Label} from 'semantic-ui-react';
@@ -58,4 +58,4 @@ import {Form, Button, Label} from 'semantic-ui-react';
 
 
 
-export default connect(null,{vehicleManufacturers, getManufacturerDetails})(App)
+export default connect(null,{vehicleManufacturers})(App)
