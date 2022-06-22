@@ -10,9 +10,9 @@ const ManufacturerDetailCard = props =>{
         let screenSize = window.innerWidth;
         let hideCard = false;
 
-        function handleClick (){
-            hideCard = true;
-        }
+        // function handleClick (){
+        //     hideCard = true;
+        // }
             
         if(hideCard)
         {

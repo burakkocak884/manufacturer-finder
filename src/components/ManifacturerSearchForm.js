@@ -3,32 +3,31 @@ import { connect} from 'react-redux';
 import {Form, Button} from 'semantic-ui-react';
 import {findVehicles} from '../action/Vehicles'
 class VehicleSearchForm extends Component{
-					constructor(props){
+
+				constructor(props)
+				{
 					super(props)
 
-				this.state={
-					year: 0,
-					make: ''
-					}
-					}
+					this.state={year: 0,make: ''}
+				}
 
 		
 				handleChange = event =>{
-					let isInvalid = this.isValidEntry(event.target.value)
-					if(!isInvalid)
-						this.setState({[event.target.name]: event.target.value})
+						let isInvalid = this.isValidEntry(event.target.value)
+						if(!isInvalid)
+							this.setState({[event.target.name]: event.target.value})
 					}
 
 				handleSubmit = event =>{
 					
-					event.preventDefault()
-					
-					if(this.state.make !== '')
-						this.props.findVehicles(this.state);
-					}
+						event.preventDefault()
+						
+						if(this.state.make !== '')
+							this.props.findVehicles(this.state);
+						}
 
-					isValidEntry(str) {
-						return (!str || /^\s*$/.test(str));
+						isValidEntry(str) {
+							return (!str || /^\s*$/.test(str));
 					}
 		
 

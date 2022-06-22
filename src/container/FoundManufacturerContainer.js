@@ -3,7 +3,6 @@ import {Link}  from 'react-router-dom';
 import { connect} from 'react-redux';
 import VehicleSearchForm from '../components/ManifacturerSearchForm';
 import ManufacturerDetailCard from '../components/ManufacturerDetailCard';
-//import { Route } from 'workbox-routing';
 
 class FoundManufacturerContainer extends Component {
 
@@ -66,13 +65,6 @@ class FoundManufacturerContainer extends Component {
 						</div>
 		}
 
-		
-		
-
-		// if(foundManufacturers && foundManufacturers.length === 0)
-		// {
-		// 	longResultMessage = <h3 className = 'result-warning'><span className = 'result-warning-message'>Couldn't find any record.</span></h3>
-		// }
 
 		return(
 		<div>
