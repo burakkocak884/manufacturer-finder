@@ -3,13 +3,27 @@ import {BrowserRouter as Router,Route, Link, Switch} from 'react-router-dom';
 import './App.css';
 import FoundManufacturerContainer from './container/FoundManufacturerContainer';
 import ContactListContainer from './container/ContactListContainer';
-import {vehicleManufacturers } from './action/Vehicles';
+import {vehicleManufacturers , screenSizeHandler} from './action/Vehicles';
 import VehicleManufacturerContainer from './container/VehicleManufacturerContainer';
 import { connect } from 'react-redux';
 import {Form, Button, Label} from 'semantic-ui-react';
 
 
     class App extends Component{
+
+
+        componentDidMount() {
+            window.addEventListener('resize', this.handleWindowSizeChange);
+          }
+      
+          componentWillUnmount() {
+            window.removeEventListener('resize', this.handleWindowSizeChange);
+          }
+      
+          handleWindowSizeChange = () => {
+            this.props.screenSizeHandler(window.innerWidth); 
+          }
+       
         
       render(){
         let currentDate = new Date();
@@ -58,4 +72,4 @@ import {Form, Button, Label} from 'semantic-ui-react';
 
 
 
-export default connect(null,{vehicleManufacturers})(App)
+export default connect(null,{vehicleManufacturers, screenSizeHandler})(App)

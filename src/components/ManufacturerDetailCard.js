@@ -1,5 +1,5 @@
 import React from 'react';
-import {Form, Button, Label} from 'semantic-ui-react';
+import {Label} from 'semantic-ui-react';
 
 
 const ManufacturerDetailCard = props =>{
@@ -10,10 +10,6 @@ const ManufacturerDetailCard = props =>{
         let screenSize = window.innerWidth;
         let hideCard = false;
 
-        // function handleClick (){
-        //     hideCard = true;
-        // }
-            
         if(hideCard)
         {
             hideCard = false;
@@ -22,7 +18,6 @@ const ManufacturerDetailCard = props =>{
         else
         {
             return(
-            
                 <div className = "manu-card">
                     
                     <div className = 'manu-detail-card'>

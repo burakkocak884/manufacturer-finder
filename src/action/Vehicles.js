@@ -66,6 +66,13 @@ export const addToContactList = manufacturerName => {
     }
 }
 
+export  const screenSizeHandler = screenSize =>{
+  return{
+    type: 'ADJUST_SCREEN_SIZE',
+    screenSize
+}
+}
+
 
 
 
