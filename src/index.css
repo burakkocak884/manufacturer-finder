@@ -238,6 +238,7 @@ color: green;
   position: absolute;
   top: 445px;
   left: 60px;
+  
 }
  #gear2 {
   color: rgb(159, 161, 159);
@@ -271,10 +272,11 @@ color: green;
 #loading-message{
 
 padding-left: 240px;
+
 }
 #loading-text{
   
-  font-size: 50px;
+  font-size: 4vw;
   font-style: italic;
   color: rgba(68, 111, 124, 0.479);
 }
