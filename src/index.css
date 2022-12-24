@@ -117,6 +117,16 @@ body {
 .data-container{
   width: 96vw;
   margin-left: 2vw;
+  background-color: rgba(217, 228, 228, 0.70);
+  border: 4px solid rgba(235, 69, 31, 0.521);
+  border-radius: 10px;
+}
+
+.main-found-manufacturer-container{
+  background-color: rgba(231, 238, 208, 0.24);
+  margin: 10px;
+  border: 4px solid rgba(68, 160, 73, 0.39);
+  border-radius: 10px;
 }
 
 .nav-button{
@@ -163,6 +173,8 @@ color: green;
   display: inline;
 }
 
+
+
 .manu-detail-card{
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   padding: 2px;
@@ -174,6 +186,7 @@ color: green;
   top: 107px;
   right: 32px;
   border: 4px solid  rgb(3, 104, 28, 0.5);
+  border-radius: 10px;
 }
 
 .manu-detail-card-header{
@@ -181,6 +194,8 @@ color: green;
 }
 .manu-card{
   padding-right: 20px;
+  border: 4px solid  rgb(3, 104, 28, 0.5);
+  border-radius: 10px;
 }
 .manu-card-hidden{
   padding-right: 2vw;
@@ -221,6 +236,16 @@ color: green;
 .search-input{
   width: 100%;
   margin: 10px;
+  min-width: 350px;
+}
+
+.search-button{
+  width: 200px;
+}
+
+.dropdown-container{
+  width: 38.5vw;
+  margin: 10px;
   
 }
 
@@ -228,6 +253,11 @@ color: green;
   /* border: 4px solid  rgb(109, 187, 233); */
   width: 40vw;
   padding: 0px 10px;
+}
+
+.country-drop-down{
+  margin: 20px 40px;
+
 }
 
 
